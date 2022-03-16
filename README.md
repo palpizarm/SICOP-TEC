@@ -15,7 +15,7 @@
 
  - Install node modules dependecies
 
-    1. Run into /backend/api
+    1. Run into /backend
   
         *npm install*
     
@@ -26,7 +26,7 @@
  - Run the project
 
     1. Run api
-        *npm start* into /backend/api
+        *npm start* into /backend
 
     2. Run Angular frontend
         *ng serve* into /sicop
