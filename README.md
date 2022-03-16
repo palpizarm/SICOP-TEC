@@ -16,18 +16,18 @@
  - Install node modules dependecies
 
     1. Run into /backend/api
-        npm install
+        [npm install]
     
     2. Run into /sicop
-        npm install
+        [npm install]
 
  - Run the project
 
     1. Run api
-        npm start into /backend/api
+        [npm start] into /backend/api
 
     2. Run Angular frontend
-        ng serve into /sicop
+        [ng serve] into /sicop
 
 
  - Common project mistakes and posible soluctions
@@ -45,7 +45,7 @@ This project follows Git Feature Workflow with Develop Branch. It allows teams t
 
 Each branch represents the code that is running on an environment. For example: master branch represents the production environment. So that, next table list all the branches and its corresponding environment.
 
- Branch    |   | Environment
+ **Branch**    |   | **Environment**
 ------------|---|------------
  master    | -> |	(production)
  develop   | -> |	(staging)
