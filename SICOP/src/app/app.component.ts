@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SICOP';
+
+  options: string[] = ["Buscar Licitaciones","Licitaciones Favoritas","Instituciones Favoritas","Categorias Guardadas","Historial de Busqueda"]
+  displaySidebar: boolean = true;
+
+  constructor() {}
 }
