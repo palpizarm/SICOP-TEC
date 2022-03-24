@@ -20,4 +20,27 @@ export class UserRegistrationService {
       }
     )
   }
+
+  registerAdmin = (name:string, email:string, password:string) => {
+    return this.http.post(
+      `${this.url}/registerAdmin`,
+      {
+        "name":name,
+        "email":email,
+        "password":password
+      }
+    )
+  }
+
+  registerMaintenance = (name:string, email:string, password:string) => {
+    return this.http.post(
+      `${this.url}/registerMaintenance`,
+      {
+        "name":name,
+        "email":email,
+        "password":password
+      }
+    )
+  }
+
 }

@@ -10,9 +10,39 @@ export class PreferencesManagementService {
   
   constructor(private http : HttpClient) { }
 
+  createCategory = (name:string, user_id:number, words:string[]) => {
+    return this.http.post(
+      `${this.url}/createCategory`,
+      {
+        "name":name,
+        "user_id":user_id,
+        "words":words
+      }
+    )
+  }
+
   getCategories = (user_id:number) => {
     return this.http.get(
       `${this.url}/getCategories/${user_id}`
+    )
+  }
+
+  getWords = (category_id:number) => {
+    return this.http.get(
+      `${this.url}/getWords/${category_id}`
+    )
+  }
+
+  updateCategory = (category_id:number, name:string, user_id:number, addWords:string[], deleteWords:string[]) => {
+    return this.http.post(
+      `${this.url}/updateCategory`,
+      {
+        "category_id":category_id,
+        "name":name,
+        "user_id":user_id,
+        "addWords":addWords,
+        "deleteWords":deleteWords
+      }
     )
   }
 
