@@ -10,7 +10,7 @@ export class AppComponent {
 
   options: string[] = ["Buscar Licitaciones","Licitaciones Favoritas","Instituciones Favoritas","Categorias Guardadas","Historial de Busqueda"]
   displaySidebar: boolean = true;
-  isLogged: boolean = true;
+  isLogged: boolean = !true;
 
   constructor() {}
 }
