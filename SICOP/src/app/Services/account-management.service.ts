@@ -18,5 +18,20 @@ export class AccountManagementService {
       }
     )
   }
+
+  getMaintenanceUsers = () => {
+    return this.http.get(
+      `${this.url}/getMaintenanceUsers`,
+     
+    )
+  }
+
+  getClientUsers = () => {
+    return this.http.get(
+      `${this.url}/getClientUsers`,
+     
+    )
+  }
+  
   
 }

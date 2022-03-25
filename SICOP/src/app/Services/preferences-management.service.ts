@@ -34,7 +34,7 @@ export class PreferencesManagementService {
   }
 
   updateCategory = (category_id:number, name:string, user_id:number, addWords:string[], deleteWords:string[]) => {
-    return this.http.post(
+    return this.http.patch(
       `${this.url}/updateCategory`,
       {
         "category_id":category_id,
