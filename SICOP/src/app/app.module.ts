@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserRegistrationComponent } from './Components/user-registration/user-registration.component';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,
