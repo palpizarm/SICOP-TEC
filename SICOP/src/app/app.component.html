@@ -1,4 +1,47 @@
+<header class="p-3 bg-navbar text-white">
+    <div class="d-flex flex-wrap align-items-center justify-content-start">
+
+        <ul class="nav col-auto me-auto mb-2 justify-content-center mb-md-0">
+            <li><button class="btn px-2 text-white" [disabled]="!isLogged" (click)="displaySidebar = !displaySidebar"><i class="fas fa-bars"></i></button></li>
+            <li><a href="#" class="nav-link px-2 text-white"><i class="fas fa-home"></i></a></li>
+        </ul>
 
 
-<!--router-->
-<router-outlet></router-outlet>
+        <div *ngIf="!isLogged" class="text-end">
+            <a href="#" class="btn btn-outline-light me-2">Iniciar sesión</a>
+        </div>
+
+        <div *ngIf="isLogged" class="text-end">
+            <button type="button" class="btn btn-outline-light me-2"><i class="fas fa-arrow-left"></i></button>
+            <button type="button" class="btn btn-outline-light me-2"><i class="fas fa-bell fx-3"></i></button>
+            <button type="button" class="btn btn-outline-light"><i class="fas fa-user"></i></button>
+        </div>
+    </div>
+</header>
+
+<div class="container-fluid animated fadeInRight">
+    <div class="row flex-nowrap">
+        <div *ngIf="isLogged" class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-sidebar" [ngClass]="{'d-none' : !displaySidebar}">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3" style="min-height:90vh;">
+                <span class="fs-3 d-none d-sm-inline">Menu</span>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li *ngFor="let item of options" class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">{{item}}</span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="align-self-end">
+                    <button type="button" class="btn btn-outline-secondary text-dark">
+                        Salir
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col py-3">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
