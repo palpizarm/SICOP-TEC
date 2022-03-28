@@ -9,6 +9,7 @@ import { CreatedMainteceAccountComponent } from './Components/UserRegistration/c
 import { HttpClientModule } from '@angular/common/http';
 import { ShowFavInstitutionsComponent } from './Components/show-fav-institutions/show-fav-institutions.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ShowUsersComponent } from './Components/show-users/show-users.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AppComponent,
     UserRegistrationComponent,
     CreatedMainteceAccountComponent,
-    ShowFavInstitutionsComponent
+    ShowFavInstitutionsComponent,
+    ShowUsersComponent
   ],
   imports: [
     BrowserModule,
