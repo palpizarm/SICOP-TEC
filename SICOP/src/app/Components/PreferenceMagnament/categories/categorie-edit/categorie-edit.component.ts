@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Word } from 'src/app/Models/word.model';
@@ -9,6 +9,8 @@ import { Word } from 'src/app/Models/word.model';
   styleUrls: ['./categorie-edit.component.css']
 })
 export class CategorieEditComponent implements OnInit {
+
+  @ViewChild('modalClose') modelCloseBtn: ElementRef
 
   edit:boolean
 
@@ -53,8 +55,10 @@ export class CategorieEditComponent implements OnInit {
       // call a service to save
 
       // press close button
-      let element: HTMLElement = document.getElementById('close-modal')[0] as HTMLElement;
+      let element: HTMLElement = document.getElementById('modalClose') as HTMLButtonElement;
       element.click();
+
+      // go to categories
     }
   }
 

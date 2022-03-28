@@ -35,21 +35,24 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div *ngIf="!edit" class="modal fade" id="confirmationModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form class="d-flex col-12 col-md-6" #formName="ngForm" (ngSubmit)="add(form)">
+            <form class="d-flex col-12" #formName="ngForm" (ngSubmit)="add(form)">
                 <div class="modal-body">
-                    <p>Digite un el nombre para el grupo de palabras claves</p>
-                    <input class="form-control me-2" type="text" placeholder="Digite el nombre"
+                    <span class="fw-bold">Digite un el nombre para el grupo de palabras claves</span>
+                    <br><br>
+                    <input class="form-control me-2 bg-light" type="text" placeholder="Digite el nombre"
                         [(ngModel)]="categoryName" required name="categoryName">
                 </div>
-                <div class="modal-footer">
-                    
-                    <button type="button" (click)="save(formName)" class="btn btn-primary">Guardar</button>
-                    <button id="modal-close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                </div>
+                
             </form>
+            <br><br>
+            <div class="modal-footer">
+                <button type="button" (click)="save(formName)" class="btn btn-primary">Guardar</button>
+                <button id='modalClose' type="button" class="btn btn-danger"
+                    data-bs-dismiss="modal">Cancelar</button>
+            </div>
         </div>
     </div>
 </div>
