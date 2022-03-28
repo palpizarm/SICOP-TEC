@@ -10,13 +10,24 @@ import { Word } from 'src/app/Models/word.model';
 })
 export class CategorieEditComponent implements OnInit {
 
+  edit:boolean
+
+  categoryName:string = ''
   word:string = ''
+  
   words: Word[] = [new Word(1,'Software',1,'2/2/2022', 0),new Word(2,'Nube',1,'2/2/2022', 0),new Word(3,'Plataforma',1,'2/2/2022', 0)]
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(parms => {
-      this.words
+    this.route.params.subscribe(parms => {
+      console.log(parms)
+      if (parms['id'] == 'new') {
+        this.edit = false
+        console.log("TEST")
+      } else {
+        this.edit = true
+        // call a service to get words
+      }
     })
   }
 
@@ -29,12 +40,22 @@ export class CategorieEditComponent implements OnInit {
   }
 
   add(form:NgForm) {
-    console.log(form.controls['word'])
     if (this.word != '') {
       this.words.push(new Word(1,this.word,1,'2/2/2022', 0))
     }
     form.resetForm();
     this.word = ''
+  }
+
+  // call a service to save a new category
+  save(form:NgForm) {
+    if (this.categoryName != '') {
+      // call a service to save
+
+      // press close button
+      let element: HTMLElement = document.getElementById('close-modal')[0] as HTMLElement;
+      element.click();
+    }
   }
 
 }

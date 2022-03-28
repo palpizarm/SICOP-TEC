@@ -10,7 +10,7 @@
                   </form>
             </div>
             <div class="col text-end">
-                <button (click)="new()" class="btn btn-primary">Crear nueva</button>
+                <button [routerLink]="['/Categories', 'new']" class="btn btn-primary">Crear nueva</button>
             </div>
         </div>
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-6 mt-4">
