@@ -7,19 +7,22 @@ import { UserRegistrationComponent } from './Components/userRegistration/user-re
 import { FormsModule } from '@angular/forms';
 import { CreatedMainteceAccountComponent } from './Components/UserRegistration/created-maintece-account/created-maintece-account.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ShowFavInstitutionsComponent } from './Components/show-fav-institutions/show-fav-institutions.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserRegistrationComponent,
-    CreatedMainteceAccountComponent
+    CreatedMainteceAccountComponent,
+    ShowFavInstitutionsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgxPaginationModule,
     HttpClientModule
 
   ],
