@@ -26,8 +26,8 @@
                 <span class="fs-3 d-none d-sm-inline">Menu</span>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li *ngFor="let item of options" class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
-                            <span class="ms-1 d-none d-sm-inline">{{item}}</span>
+                        <a href={{item.route}} class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">{{item.name}}</span>
                         </a>
                     </li>
                 </ul>
