@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/Models/category.model';
 
 @Component({
@@ -9,7 +10,8 @@ import { Category } from 'src/app/Models/category.model';
 export class CategorieCardComponent implements OnInit {
 
   @Input() category : Category;
-  constructor() { }
+
+  constructor(router:Router) { }
 
   ngOnInit(): void {
   }

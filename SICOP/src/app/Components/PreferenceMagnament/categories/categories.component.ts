@@ -10,7 +10,7 @@ export class CategoriesComponent implements OnInit {
 
 
   categories: Category[] = [new Category(1,"Prueba de grupo 1", 1, 0 ,"02,02,2022"), 
-                            new Category(1,"Prueba de grupo 2", 1, 0 ,"02,02,2022")
+                            new Category(2,"Prueba de grupo 2", 1, 0 ,"02,02,2022")
                           ]
   constructor() { }
 
