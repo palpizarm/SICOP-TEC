@@ -1,7 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Category } from 'src/app/Models/category.model';
 import { Word } from 'src/app/Models/word.model';
+import { FavoriteInstitutionsManagementService } from 'src/app/Services/favorite-institutions-management.service';
+import { PreferencesManagementService } from 'src/app/Services/preferences-management.service';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-categorie-edit',
@@ -13,28 +18,39 @@ export class CategorieEditComponent implements OnInit {
   @ViewChild('modalClose') modelCloseBtn: ElementRef
 
   edit:boolean
-
-  categoryName:string = ''
   word:string = ''
-  
-  words: Word[] = [new Word(1,'Software',1,'2/2/2022', 0),new Word(2,'Nube',1,'2/2/2022', 0),new Word(3,'Plataforma',1,'2/2/2022', 0)]
-  constructor(private route: ActivatedRoute) { }
+  category: Category = new Category();
+
+  words: Word[] = [];
+  addedWord: string[];
+  deletedWords: string[];
+
+  constructor(private route: ActivatedRoute, private preferenceService: PreferencesManagementService, private institutionsService:FavoriteInstitutionsManagementService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(parms => {
-      console.log(parms)
       if (parms['id'] == 'new') {
         this.edit = false
-        console.log("TEST")
       } else {
         this.edit = true
-        // call a service to get words
+        this.category.category_id = parms['id']
+        this.preferenceService.getWords(this.category.category_id)
+          .subscribe((data:any) => {
+            console.log(data.data.rows)
+            this.words = data.data.rows
+          })
+        
       }
+    })
+
+    this.institutionsService.getInstitutions([{abbreviation: "BN", date_created: "2022-03-22T06:00:00.000Z", deleted: "0", institution_id: 1, legal_id: "1", name: "Banco Naciona"}])
+      .subscribe((data:any) => {
+        console.log(data)
     })
   }
 
   update() {
-    
+//this.preferenceService.updateCategory(this.category_id,)
   }
 
   remove(index:number) {
@@ -51,7 +67,7 @@ export class CategorieEditComponent implements OnInit {
 
   // call a service to save a new category
   save(form:NgForm) {
-    if (this.categoryName != '') {
+    if (this.category.name != '') {
       // call a service to save
 
       // press close button

@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
+import {map} from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -46,7 +49,25 @@ export class FavoriteInstitutionsManagementService {
   }
 
 
+  getInstitutions = (institutionsList: any[]) => {
+    return this.http.get(
+      `${this.url}`,
+    ).pipe( map(resp => {
+      var institutions:[] = resp['data']
+      institutions = institutions['rows']
+      return institutions.filter((element:any) => compareInstitution(element.name, institutionsList))
+    }))
+  }
 
 
 
+
+}
+
+const compareInstitution = (name:string, institutionList: any[]) => {
+  var result:boolean = true
+  institutionList.forEach(element => {
+    if (element.name == name) result = false
+  });
+  return result
 }

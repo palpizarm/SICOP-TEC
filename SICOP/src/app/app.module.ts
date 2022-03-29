@@ -7,7 +7,11 @@ import { CategoriesComponent } from './Components/PreferenceMagnament/categories
 import { CategorieCardComponent } from './Components/PreferenceMagnament/categories/categorie-card/categorie-card.component';
 import { CategorieEditComponent } from './Components/PreferenceMagnament/Categories/categorie-edit/categorie-edit.component';
 import { FormsModule } from '@angular/forms';
+import { UserRegistrationComponent } from './Components/userRegistration/user-registration/user-registration.component';
+import { CreatedMainteceAccountComponent } from './Components/UserRegistration/created-maintece-account/created-maintece-account.component';
+
 import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -15,13 +19,16 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     CategoriesComponent,
     CategorieCardComponent,
-    CategorieEditComponent
+    CategorieEditComponent,
+    UserRegistrationComponent,
+    CreatedMainteceAccountComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,16 +1,16 @@
 export class Category {
-
-    constructor(category_id: number, name:string, user_id:number,  deleted:number, dateCreated:string) {
-        this.category_id = category_id
-        this.name = name
-        this.user_id = user_id
-        this.deleted = deleted
-        this.dateCreated = dateCreated    
-    }
-
     category_id: number
     name:string
     user_id:number
     deleted:number    
     dateCreated:string
+
+    constructor() {
+        this.category_id = 0
+        this.name = ""
+        this.user_id = 0
+        this.deleted = 0   
+        this.dateCreated = ""
+    }
+    
 }
