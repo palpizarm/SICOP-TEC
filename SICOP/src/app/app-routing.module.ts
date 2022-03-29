@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { CategorieEditComponent } from './Components/PreferenceMagnament/Categories/categorie-edit/categorie-edit.component';
 import { CategoriesComponent } from './Components/PreferenceMagnament/categories/categories.component';
 import { ShowFavInstitutionsComponent } from './Components/show-fav-institutions/show-fav-institutions.component';
@@ -14,7 +13,7 @@ const routes: Routes = [
   { path: 'userRegistration', component: UserRegistrationComponent},
   { path: 'showFavInstitutions', component: ShowFavInstitutionsComponent},
   { path: 'MainteceRegistration', component: CreatedMainteceAccountComponent}
-
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
