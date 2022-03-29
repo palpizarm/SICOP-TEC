@@ -33,5 +33,14 @@ export class AccountManagementService {
     )
   }
   
+  login = (email:string, password:string) => {
+    return this.http.post(
+      `${this.url}/login`,
+      {
+        "email":email,
+        "password":password
+      }
+    )
+  }
   
 }
