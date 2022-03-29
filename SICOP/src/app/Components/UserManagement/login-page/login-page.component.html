@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col min-vh-100">
         <div class="pt-5 pb-5">
-            <form (ngSubmit)="login()" #form="ngForm" class="validate-form text-center mt-5">
+            <form (ngSubmit)="login(form)" #form="ngForm" class="validate-form text-center mt-5">
 
                 <h1 class="fs-1 fw-bolder mb-5">
                     INGRESAR
@@ -38,7 +38,7 @@
 
             </form>
             <div class="text-secondary text-center">
-                <p> ¿No tienes una cuenta? <a href="">Regístrate</a></p>
+                <p> ¿No tienes una cuenta? <a [routerLink]="['/userRegistration']">Regístrate</a></p>
             </div>
         </div>
     </div>
