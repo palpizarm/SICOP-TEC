@@ -17,7 +17,7 @@ export class SidebarOptions {
                     },
                     {
                         name: "Instituciones Favoritas",
-                        route: "/Institutions"
+                        route: "/FavInstitutions"
                     },
                     {
                         name: "Categorias Guardadas",
