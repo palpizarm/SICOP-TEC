@@ -45,7 +45,7 @@ export class SidebarOptions {
                 return [
                     {
                         name: "Ver Usuarios",
-                        route: "UsersList"
+                        route: "Users"
                     },
                     {
                         name: "Lista de categorias",
