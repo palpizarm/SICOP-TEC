@@ -14,7 +14,7 @@ export class AppComponent {
   options: Options[] = SidebarOptions.getOptions('Cliente')
 
   displaySidebar: boolean = true;
-  isLogged: boolean = true;
+  isLogged: boolean = !true;
 
   constructor() {}
 }
