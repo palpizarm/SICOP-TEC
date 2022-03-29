@@ -6,16 +6,47 @@
     </button> -->
   </div>
 
-  <div class="divTable divTableStyle">
+  <div class="form-check form-check-inline">
+    <input
+      class="form-control me-2"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+    />
+  </div>
+  <div class="form-check form-check-inline">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="clientUsers"
+      [checked]="clientUsers"
+      (change)="loadClientUsers()"
+      [(ngModel)]="clientUsers"
+    />
+    <label class="form-check-label" for="clientUsers">Clientes</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="maintanceUsers"
+      [checked]="maintanceUsers"
+      (change)="loadMaintanceUsers()"
+      [(ngModel)]="maintanceUsers"
+    />
+    <label class="form-check-label" for="maintanceUsers">Mantenimiento</label>
+  </div>
+
+  <div class="divTable divTableStyle" *ngIf="!clientUsers && !maintanceUsers">
     <div class="divTableHeading">
       <div class="divTableRow">
         <div class="divTableHead Seleccionar">Seleccionar</div>
         <div class="divTableHead Nombre">Nombre</div>
         <div class="divTableHead Correo">Correo electrónico</div>
         <div class="divTableHead Correo">Tipo de Usuario</div>
-        <!-- <div class="divTableHead Editar">Editar</div> -->
       </div>
     </div>
+
     <div class="divTableBody">
       <div
         class="divTableRow"
@@ -39,56 +70,67 @@
     </div>
   </div>
 
-  <!-- Modal -->
-  <div
-    class="modal fade"
-    id="exampleModal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">
-            Agregar institucion favorita
-          </h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+  <div class="divTable divTableStyle" *ngIf="clientUsers">
+    <div class="divTableHeading">
+      <div class="divTableRow">
+        <div class="divTableHead Seleccionar">Seleccionar</div>
+        <div class="divTableHead Nombre">Nombre</div>
+        <div class="divTableHead Correo">Correo electrónico</div>
+        <div class="divTableHead Correo">Tipo de Usuario</div>
+      </div>
+    </div>
+
+    <div class="divTableBody">
+      <div
+        class="divTableRow"
+        *ngFor="
+          let user of clientUserList
+            | paginate: { itemsPerPage: 10, currentPage: page };
+          let i = index
+        "
+      >
+        <div class="divTableCell Seleccionar">
+          <input type="checkbox" id="{{ user.user_id }}" />
         </div>
-        <div class="modal-body">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="institutionSelect"
-                >Instituciones</label
-              >
-            </div>
-            <select class="custom-select" id="institutionSelect">
-              <ng-template
-                ngFor
-                let-institution
-                [ngForOf]="userList"
-                let-i="index"
-                let-f="first"
-              >
-                <option *ngIf="f" selected>{{ user.name }}</option>
-                <option *ngIf="!f">{{ user.name }}</option>
-              </ng-template>
-            </select>
-          </div>
+        <div class="divTableCell Nombre">{{ user.name }}</div>
+        <div class="divTableCell Correo">
+          {{ user.email }}
         </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Cerrar
-          </button>
+        <div class="divTableCell Tipo">
+          {{ user.role }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divTable divTableStyle" *ngIf="maintanceUsers">
+    <div class="divTableHeading">
+      <div class="divTableRow">
+        <div class="divTableHead Seleccionar">Seleccionar</div>
+        <div class="divTableHead Nombre">Nombre</div>
+        <div class="divTableHead Correo">Correo electrónico</div>
+        <div class="divTableHead Correo">Tipo de Usuario</div>
+      </div>
+    </div>
+
+    <div class="divTableBody">
+      <div
+        class="divTableRow"
+        *ngFor="
+          let user of maintanceUserList
+            | paginate: { itemsPerPage: 10, currentPage: page };
+          let i = index
+        "
+      >
+        <div class="divTableCell Seleccionar">
+          <input type="checkbox" id="{{ user.user_id }}" />
+        </div>
+        <div class="divTableCell Nombre">{{ user.name }}</div>
+        <div class="divTableCell Correo">
+          {{ user.email }}
+        </div>
+        <div class="divTableCell Tipo">
+          {{ user.role }}
         </div>
       </div>
     </div>

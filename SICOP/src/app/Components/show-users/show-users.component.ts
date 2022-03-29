@@ -12,7 +12,8 @@ export class ShowUsersComponent implements OnInit {
   userList:any[]=[];
   maintanceUserList:any[]=[];
   clientUserList:any[]=[];
-  
+  clientUsers:boolean=false;
+  maintanceUsers:boolean=false;
   constructor(private _accountService:AccountManagementService) { }
 
   ngOnInit(): void {
@@ -27,19 +28,22 @@ export class ShowUsersComponent implements OnInit {
     )
   }
   loadClientUsers(){
+    this.maintanceUsers=false;
     this._accountService.getClientUsers().subscribe(
       (data:any)=>{
         this.clientUserList= data.data.rows;
-        console.log(this.clientUserList);
+        console.log(this.clientUserList,this.clientUsers);
+      
       }
     )
   }
 
   loadMaintanceUsers(){
+    this.clientUsers = false;
     this._accountService.getMaintenanceUsers().subscribe(
       (data:any)=>{
         this.maintanceUserList= data.data.rows;
-        console.log(this.maintanceUserList);
+        console.log(this.maintanceUserList,this.maintanceUsers);
       }
     )
   }
