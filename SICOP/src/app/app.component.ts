@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { SidebarOptions } from './Classes/sidebar-options.model';
+import { Options } from './Models/options.model';
+
 
 @Component({
   selector: 'app-root',
@@ -8,7 +11,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'SICOP';
 
-  options: string[] = ["Buscar Licitaciones","Licitaciones Favoritas","Instituciones Favoritas","Categorias Guardadas","Historial de Busqueda"]
+  options: Options[] = SidebarOptions.getOptions('Cliente')
+
   displaySidebar: boolean = true;
   isLogged: boolean = !true;
 

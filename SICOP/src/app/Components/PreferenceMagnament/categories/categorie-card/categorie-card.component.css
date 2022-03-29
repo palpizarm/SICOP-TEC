@@ -1,0 +1,11 @@
+.bg-card {
+    background-color: #9180FF;
+}
+
+.bg-card:hover {
+    background-color: #7c67ff;
+}
+
+.pointer {
+    cursor: pointer;
+}
