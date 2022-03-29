@@ -13,7 +13,6 @@ const routes: Routes = [
   { path: 'MainteceRegistration', component: CreatedMainteceAccountComponent},
   { path: 'showFavInstitutions', component: ShowFavInstitutionsComponent},
   { path: 'MainteceRegistration', component: CreatedMainteceAccountComponent}
-
 ]
 
 @NgModule({
