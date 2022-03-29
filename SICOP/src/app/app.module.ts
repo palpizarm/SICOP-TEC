@@ -9,9 +9,9 @@ import { CategorieEditComponent } from './Components/PreferenceMagnament/Categor
 import { FormsModule } from '@angular/forms';
 import { UserRegistrationComponent } from './Components/userRegistration/user-registration/user-registration.component';
 import { CreatedMainteceAccountComponent } from './Components/UserRegistration/created-maintece-account/created-maintece-account.component';
-
 import { HttpClientModule } from '@angular/common/http';
-
+import { ShowFavInstitutionsComponent } from './Components/show-fav-institutions/show-fav-institutions.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -21,12 +21,15 @@ import { HttpClientModule } from '@angular/common/http';
     CategorieCardComponent,
     CategorieEditComponent,
     UserRegistrationComponent,
-    CreatedMainteceAccountComponent
+    CreatedMainteceAccountComponent,
+    CreatedMainteceAccountComponent,
+    ShowFavInstitutionsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgxPaginationModule,
     HttpClientModule
 
   ],

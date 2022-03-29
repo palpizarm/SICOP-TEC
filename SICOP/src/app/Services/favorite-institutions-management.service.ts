@@ -48,7 +48,6 @@ export class FavoriteInstitutionsManagementService {
     )
   }
 
-
   getInstitutions = (institutionsList: any[]) => {
     return this.http.get(
       `${this.url}`,
@@ -58,10 +57,6 @@ export class FavoriteInstitutionsManagementService {
       return institutions.filter((element:any) => compareInstitution(element.name, institutionsList))
     }))
   }
-
-
-
-
 }
 
 const compareInstitution = (name:string, institutionList: any[]) => {
