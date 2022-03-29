@@ -19,6 +19,13 @@ export class AccountManagementService {
     )
   }
 
+  getUsers = () => {
+    return this.http.get(
+      `${this.url}/getUsers`,
+     
+    )
+  }
+  
   getMaintenanceUsers = () => {
     return this.http.get(
       `${this.url}/getMaintenanceUsers`,
