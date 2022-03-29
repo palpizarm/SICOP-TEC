@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Palette colors */
+
+.dark-blue {
+    background-color: #00163E;
+}
+
+.dark-turquoise {
+    background-color: #386978;
+}
+
+.light-blue {
+    background-color: #B0D3DB;
+}
+
+.turquoise {
+    background-color: #69B3C5;
+}
+
+.red {
+    background-color: #AE1313;
+}
+
+.dark-red {
+    background-color: #760000;
+}
