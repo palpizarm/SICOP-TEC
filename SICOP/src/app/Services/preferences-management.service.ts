@@ -46,4 +46,19 @@ export class PreferencesManagementService {
     )
   }
 
+
+  getCategoryById = (category_id:number) => {
+    return this.http.get(
+      `${this.url}/getCategory/${category_id}`
+    )
+  }
+
+
+  deleteCategory = (category_id:number) => {
+    return this.http.delete(
+      `${this.url}/${category_id}`
+    )
+  }
+
+
 }

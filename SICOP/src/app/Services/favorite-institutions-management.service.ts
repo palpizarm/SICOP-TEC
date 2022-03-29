@@ -46,7 +46,10 @@ export class FavoriteInstitutionsManagementService {
   }
 
 
-
-
+  getInstitutions = () => {
+    return this.http.get(
+      `${this.url}`,
+    )
+  }
 
 }
