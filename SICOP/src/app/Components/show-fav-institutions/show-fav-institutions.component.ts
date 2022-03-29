@@ -63,11 +63,26 @@ export class ShowFavInstitutionsComponent implements OnInit {
         //     console.log(data);
         //   }
         // )
-
       }
-      
     });
+  }
 
+  deleteInstitutions(){
+    let inputList = document.getElementsByTagName("input");
+
+    for(let i=0;i<inputList.length;i++)
+    {
+      if(inputList[i].checked)
+      {
+        let institutionID = parseInt(inputList[i].id);
+        this._favInstitutionsService.deleteFavorite(this.userID,institutionID).subscribe(
+          (data:any) => {
+            this.institutionsList = data.data.rows
+            console.log(this.institutionsList)
+          }
+        )
+      }
+    }
   }
 
 }
