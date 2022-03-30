@@ -33,7 +33,13 @@ export class LoginPageComponent implements OnInit {
           localStorage.setItem('userID', userInfo.user_id);
           localStorage.setItem('roleID', userInfo.role_id);
 
-          this.router.navigateByUrl('/FavInstitutions')
+          if (userInfo.role_id == 3) {
+            this.router.navigateByUrl('/FavInstitutions')
+          } else if (userInfo.role_id == 1){
+            this.router.navigateByUrl('/Users')
+          } else {
+            this.router.navigateByUrl('/CategoriesList')
+          }
           // notify all component that users is logged
           this.accountService.isLoggedEmit(true)
         }

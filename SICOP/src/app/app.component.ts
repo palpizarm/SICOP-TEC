@@ -4,7 +4,6 @@ import { SidebarOptions } from './Classes/sidebar-options.model';
 import { Options } from './Models/options.model';
 import { AccountManagementService } from './Services/account-management.service';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
