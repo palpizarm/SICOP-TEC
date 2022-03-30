@@ -50,6 +50,12 @@ div.divTableStyle {
   width: 10%;
 }
 
+.divTable.divTableStyle .Estado {
+  border: 1px solid #ffffff;
+  padding: 3px 1px;
+  width: 10%;
+}
+
 .divTable.divTableStyle .Editar button {
   background: none;
   border: none;

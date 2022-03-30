@@ -1,8 +1,24 @@
+.bg-btn-create-account {
+    background-color: #8699DA;
+}
+
+
 .bg-image {
-    background-color: #DEE5FC;
+    background-color: #dae6fc;
+    justify-content: center;
+    align-items: center;
+}
+
+*{
+    padding: 0px;
+}
+
+.center {
+    width: 100%;
 }
 
 
 .bg-btn-create-account {
-    background-color: #8699DA;
+    background-color: #92a1bd;
+    padding-bottom: 10px;
 }

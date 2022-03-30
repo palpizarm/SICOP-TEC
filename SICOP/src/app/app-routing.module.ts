@@ -13,14 +13,11 @@ const routes: Routes = [
   { path: '', component: LoginPageComponent},
   { path: 'userRegistration', component: UserRegistrationComponent},
   { path: 'MainteceRegistration', component: CreatedMainteceAccountComponent, canActivate: [IsLoggedGuard]},
-  { path: 'Users',component:ShowUsersComponent, canActivate: [IsLoggedGuard]},
+  { path: 'Users', component: ShowUsersComponent, canActivate: [IsLoggedGuard]},
   { path: "Categories", component: CategoriesComponent, canActivate: [IsLoggedGuard]},
   { path: 'Categories/:id', component: CategorieEditComponent, canActivate: [IsLoggedGuard]},
-  { path: 'userRegistration', component: UserRegistrationComponent, canActivate: [IsLoggedGuard]},
-  { path: 'MainteceRegistration', component: CreatedMainteceAccountComponent, canActivate: [IsLoggedGuard]},
   { path: 'showFavInstitutions', component: ShowFavInstitutionsComponent, canActivate: [IsLoggedGuard]},
   { path: 'FavInstitutions', component: ShowFavInstitutionsComponent, canActivate: [IsLoggedGuard]},
-  { path: 'MainteceRegistration', component: CreatedMainteceAccountComponent, canActivate: [IsLoggedGuard]},
   { path: '**', pathMatch: 'full', redirectTo: 'FavInstitutions'}
 ]
 

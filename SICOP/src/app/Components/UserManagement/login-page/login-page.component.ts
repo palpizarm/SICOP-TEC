@@ -12,7 +12,7 @@ import Swal from 'sweetalert2'
 })
 export class LoginPageComponent implements OnInit {
 
-  user: User = new User("","","");
+  user: User = new User();
 
   constructor(
     private accountService : AccountManagementService, 
