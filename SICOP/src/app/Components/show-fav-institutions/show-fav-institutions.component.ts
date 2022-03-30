@@ -43,7 +43,7 @@ export class ShowFavInstitutionsComponent implements OnInit {
   {
     this._favInstitutionsService.getInstitutions(this.favInstitutionsList).subscribe(
       (data:any) => {
-        this.institutionsList = data.data.rows
+        this.institutionsList = data
         console.log(this.institutionsList)
       }
     )
