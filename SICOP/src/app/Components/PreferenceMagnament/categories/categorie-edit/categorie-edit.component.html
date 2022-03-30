@@ -55,12 +55,13 @@
 <div *ngIf="!edit" class="modal fade" id="confirmationModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form class="d-flex col-12" #formName="ngForm" (ngSubmit)="add(form)">
+            <form class="d-flex col-12 validate-form" #formName="ngForm" (ngSubmit)="add(form)">
                 <div class="modal-body">
                     <span class="fw-bold">Digite un el nombre para el grupo de palabras claves</span>
                     <br><br>
                     <input class="form-control me-2 bg-light" type="text" placeholder="Digite el nombre"
-                        [(ngModel)]="categoryName" required name="categoryName">
+                        [(ngModel)]="category.name" required categoryName name="categoryName">
+                    <span *ngIf="form.submitted && form.controls['categoryName'].errors" class="text-danger animated fadeIn">Ingrese el nombre de la categoria</span>
                 </div>
 
             </form>

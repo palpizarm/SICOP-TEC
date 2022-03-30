@@ -25,7 +25,6 @@ export class ShowUsersComponent implements OnInit {
     this._accountService.getUsers().subscribe(
       (data:any)=>{
         this.userList= data.data.rows;
-        console.log(this.userList);
       }
     )
   }
@@ -34,7 +33,6 @@ export class ShowUsersComponent implements OnInit {
     this._accountService.getClientUsers().subscribe(
       (data:any)=>{
         this.clientUserList= data.data.rows;
-        console.log(this.clientUserList,this.clientUsers);
       
       }
     )
@@ -45,7 +43,6 @@ export class ShowUsersComponent implements OnInit {
     this._accountService.getMaintenanceUsers().subscribe(
       (data:any)=>{
         this.maintanceUserList= data.data.rows;
-        console.log(this.maintanceUserList,this.maintanceUsers);
       }
     )
   }
