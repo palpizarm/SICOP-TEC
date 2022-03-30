@@ -22,7 +22,7 @@ export class AccountManagementService {
 
   inactivateUser = (user_id:number) => {
     return this.http.patch(
-      `${this.url}/registerClient`,
+      `${this.url}/inactivateUser`,
       {
         "user_id": user_id
       }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountManagementService } from '../../Services/account-management.service';
 import * as XLSX from 'xlsx';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-show-users',
@@ -47,8 +47,25 @@ export class ShowUsersComponent implements OnInit {
     )
   }
 
-  inactiveUser(){
-
+  inactiveUser(user_id:number){
+    Swal.fire({
+      text: '¿Esta seguro de desea inactivar el usuario?',
+      icon: 'question',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar',
+      showCancelButton: true
+    }).then(result => {
+      if(result.isConfirmed) {
+        this._accountService.inactivateUser(user_id)
+        .subscribe((data:any) => {
+          if (data.code > 0) {
+            Swal.fire({text:'Usuario inactivado',icon:'success'})
+          } else {
+            Swal.fire({text:data.msg, icon:'error'})
+          }
+        })
+      }
+    })
   }
 
   downloadUsers()
@@ -93,9 +110,11 @@ export class ShowUsersComponent implements OnInit {
 
       XLSX.writeFile(wb,"Lista_Usuarios.xlsx");
     }
+  }
 
-    
 
+  status(status:number) {
+    return status==1?'Activo':'Inactivo';
   }
 
 
