@@ -1,70 +1,77 @@
 <div class="container">
-    <p class="text-center fw-bold fs-4">Instituciones favoritas</p>
-    <div class="button-group">
-        <button type="button" class="action-button" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</button>
-        
-        <button type="button" class="action-button" (click)="deleteInstitutions()">Eliminar</button> 
+  <p class="text-center fw-bold fs-4">Instituciones favoritas</p>
+  <div class="button-group">
+    <button type="button" class="action-button" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</button>
+    <button type="button" class="action-button" (click)="deleteInstitutions()">Eliminar</button> 
+  </div>
+
+  <div class="divTable divTableStyle">
+    <div class="divTableHeading">
+      <div class="divTableRow">
+        <div class="divTableHead Seleccionar">Seleccionar</div>
+        <div class="divTableHead cedJuridica">Cédula Jurídica</div>
+        <div class="divTableHead Abreviatura">Abreviatura</div>
+        <div class="divTableHead Nombre">Nombre</div>
+        <!-- <div class="divTableHead Editar">Editar</div> -->
+      </div>
     </div>
 
-    <div class="divTable divTableStyle">
-        <div class="divTableHeading">
-            <div class="divTableRow">
-                <div class="divTableHead Seleccionar">Seleccionar</div>
-                <div class="divTableHead cedJuridica">Cédula Jurídica</div>
-                <div class="divTableHead Abreviatura">Abreviatura</div>
-                <div class="divTableHead Nombre">Nombre</div>
-                <!-- <div class="divTableHead Editar">Editar</div> -->
-            </div>
+    <div class="divTableBody">
+      <div 
+      class="divTableRow" 
+      *ngFor="let favInstitution of favInstitutionsList | paginate: { itemsPerPage: 10, currentPage: page }; let i = index" 
+      >
+        <div class="divTableCell Seleccionar">
+          <input type="checkbox" id="{{ favInstitution.institution_id }}">
         </div>
-        <div class="divTableBody">
-
-            <div 
-                class="divTableRow" 
-                *ngFor="let institution of favInstitutionsList | paginate: { itemsPerPage: 10, currentPage: page }; let i = index" 
-            >
-                <div class="divTableCell Seleccionar">
-                    <input type="checkbox" id="{{ institution.institution_id }}">
-                </div>
-                <div class="divTableCell cedJuridica">{{ institution.legal_id }}</div>
-                <div class="divTableCell Abreviatura">{{ institution.abbreviation }}</div>
-                <div class="divTableCell Nombre">{{ institution.name }}</div>
-                <!-- <div class="divTableCell Editar">
-                    <button>
-                        <i class="far fa-edit"></i>
-                    </button>
-                </div> -->
-            </div>
-        </div>    
+        <div class="divTableCell cedJuridica">{{ favInstitution.legal_id }}</div>
+        <div class="divTableCell Abreviatura">{{ favInstitution.abbreviation }}</div>
+        <div class="divTableCell Nombre">{{ favInstitution.name }}</div>
+        <!-- <div class="divTableCell Editar">
+        <button>
+        <i class="far fa-edit"></i>
+        </button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <pagination-controls
+    class="my-pagination"
+    (pageChange) = "page = $event"
+    responsive="true"
+    previousLabel="Anterior"
+    nextLabel="Siguiente"
+  ></pagination-controls>
 </div>
 
 
 
   
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Agregar institucion favorita</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="institutionSelect">Instituciones</label>
-                </div>
-                <select class="custom-select" id="institutionSelect">
-                    <ng-template ngFor let-institution [ngForOf]="institutionsList" let-i="index" let-f="first">
-                        <option *ngIf="f" selected>{{ institution.name }}</option>
-                        <option *ngIf="!f">{{ institution.name }}</option>
-                    </ng-template>
-                </select>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar institucion favorita</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="institutionSelect">Instituciones</label>
               </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveInstitution()">Guardar institucion</button>
-        </div>
+              <select class="custom-select" id="institutionSelect">
+                  <ng-template ngFor let-institution [ngForOf]="institutionsList" let-i="index" let-f="first">
+                      <option *ngIf="f" selected>{{ institution.name }}</option>
+                      <option *ngIf="!f">{{ institution.name }}</option>
+                  </ng-template>
+              </select>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveInstitution()">Guardar institucion</button>
       </div>
     </div>
   </div>
+</div>

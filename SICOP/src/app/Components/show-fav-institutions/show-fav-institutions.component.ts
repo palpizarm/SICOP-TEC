@@ -53,18 +53,19 @@ export class ShowFavInstitutionsComponent implements OnInit {
   {
     let institutionSelect = document.getElementById("institutionSelect") as HTMLInputElement;
     let institutionName = institutionSelect.value;
+    
 
-    this.institutionsList.forEach(i => {
-      if(i.name == institutionName)
+    for(let i=0;i<this.institutionsList.length;i++)
+    {
+      if(this.institutionsList[i].name == institutionName)
       {
-        console.log(i);
-        this._favInstitutionsService.createFavorite(this.userID,i.institution_id).subscribe(
+        this._favInstitutionsService.createFavorite(this.userID,this.institutionsList[i].institution_id).subscribe(
           (data:any) => {
             console.log(data);
           }
         )
       }
-    });
+    };
     location.reload();
   }
 
