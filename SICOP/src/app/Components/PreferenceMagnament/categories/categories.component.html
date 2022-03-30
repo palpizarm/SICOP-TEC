@@ -15,7 +15,7 @@
         </div>
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-6 mt-4">
             <div *ngFor="let item of categories" class="col mb-1">
-                <app-categorie-card [category]="item"></app-categorie-card>
+                <app-categorie-card [category]="item" (deleted)="updateList()"></app-categorie-card>
             </div>
     </div>
 </div>

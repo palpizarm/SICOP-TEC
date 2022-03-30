@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/Models/category.model';
+import { PreferencesManagementService } from 'src/app/Services/preferences-management.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-categories',
@@ -9,12 +11,30 @@ import { Category } from 'src/app/Models/category.model';
 export class CategoriesComponent implements OnInit {
 
 
-  categories: Category[] = [new Category(1,"Prueba de grupo 1", 1, 0 ,"02,02,2022"), 
-                            new Category(2,"Prueba de grupo 2", 1, 0 ,"02,02,2022")
-                          ]
-  constructor() { }
+  categories: Category[] = []
+  constructor(private preferenceService: PreferencesManagementService) { }
 
   ngOnInit(): void {
+    localStorage.setItem('user_id', '1')
+    if (localStorage.getItem('user_id')) {
+      this.preferenceService.getCategories(parseInt(localStorage.getItem('user_id')))
+        .subscribe((data: any) => {
+          this.categories = data.data.rows
+        })
+    }
+
   }
 
+  updateList() {
+    if (localStorage.getItem('user_id')) {
+      Swal.fire({ text: 'Cargando...', allowOutsideClick: false })
+      Swal.showLoading()
+      this.preferenceService.getCategories(parseInt(localStorage.getItem('user_id')))
+        .subscribe((data: any) => {
+          this.categories = data.data.rows
+        })
+      Swal.close()
+    }
+
+  }
 }

@@ -1,10 +1,10 @@
-<div [routerLink]="['/Categories/',category.category_id]" class="card bg-card pointer" style="max-width: 10rem;">
+<div class="card bg-card" style="max-width: 10rem;">
     <div class="card-body text-white px-3">
-      <p class="card-title">{{category.dateCreated}}</p>
+      <p class="card-title" style="font-size: small;">{{parseTime(category.date_created)}}</p>
       <h5 class="card-text">{{category.name}}</h5>
       <div class="d-flex justify-content-end">
-        <button class="btn text-white"><i class="fas fa-edit"></i></button>
-        <button class="btn text-white"><i class="fas fa-trash"></i></button>
+        <button [routerLink]="['/Categories/',category.category_id]" class="btn text-white"><i class="fas fa-edit"></i></button>
+        <button (click)="remove()" class="btn text-white"><i class="fas fa-trash"></i></button>
       </div>
     </div>
 </div>

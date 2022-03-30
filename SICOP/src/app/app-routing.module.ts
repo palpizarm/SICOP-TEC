@@ -8,7 +8,6 @@ import { CreatedMainteceAccountComponent } from './Components/UserRegistration/c
 import { UserRegistrationComponent } from './Components/userRegistration/user-registration/user-registration.component';
 import { ShowUsersComponent } from './Components/show-users/show-users.component';
 
-
 const routes: Routes = [
   { path: '', component: LoginPageComponent},
   { path: 'userRegistration', component: UserRegistrationComponent},
