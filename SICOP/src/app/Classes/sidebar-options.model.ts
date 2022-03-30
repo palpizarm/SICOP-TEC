@@ -5,7 +5,7 @@ export class SidebarOptions {
 
     static getOptions(userType:string):Options[] {
         switch(userType) {
-            case 'Cliente': {
+            case '3': {
                 return [
                     { 
                         name: 'Buscar Licitaciones',
@@ -29,7 +29,7 @@ export class SidebarOptions {
                     }
                 ]
             }
-            case 'Mantenimiento': {
+            case '2': {
                 return [
                     {
                         name: "Lista de categorias",
@@ -41,7 +41,7 @@ export class SidebarOptions {
                     }
                 ]
             }
-            case 'Administrador': {
+            case '1': {
                 return [
                     {
                         name: "Ver Usuarios",
