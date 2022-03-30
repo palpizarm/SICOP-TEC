@@ -55,6 +55,11 @@ div.divTableStyle {
     border: none;
   }
 
+  .my-pagination /deep/.ngx-pagination{
+    margin-top: 10px;
+    padding: 0;
+  }
+
   .divTable.divTableStyle .divTableBody .divTableCell {
     font-size: 13px;
   }
