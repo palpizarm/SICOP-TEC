@@ -1,0 +1,26 @@
+.bg-image {
+    background-color: #dae6fc;
+    
+
+}
+
+*{
+    padding: 0px;
+}
+
+.center {
+    margin-top: 16%;
+    display: block;
+    width: 100%;
+}
+
+
+.bg-btn-create-account {
+    background-color: #92a1bd;
+    padding-bottom: 10px;
+}
+
+.changePassword {
+    text-align: left;
+    margin-left: 55%;
+}
