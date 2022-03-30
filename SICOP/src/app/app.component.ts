@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SidebarOptions } from './Classes/sidebar-options.model';
 import { Options } from './Models/options.model';
+import { AccountManagementService } from './Services/account-management.service';
 
 
 @Component({
@@ -11,10 +12,23 @@ import { Options } from './Models/options.model';
 export class AppComponent {
   title = 'SICOP';
 
-  options: Options[] = SidebarOptions.getOptions('Cliente')
+  options: Options[] = []
 
   displaySidebar: boolean = true;
   isLogged: boolean = false;
 
-  constructor() {}
+  constructor(private accountService : AccountManagementService) {}
+
+  ngOnInit(): void {
+    this.accountService.isLoggedEmitter
+      .subscribe((isLogged : boolean) => {
+        this.isLogged = isLogged
+        this.options = SidebarOptions.getOptions(localStorage.getItem('roleID'))
+        if (!this.isLogged) {
+          localStorage.removeItem('userID')
+          localStorage.removeItem('roleID')
+        }
+      })
+  }
+  
 }
