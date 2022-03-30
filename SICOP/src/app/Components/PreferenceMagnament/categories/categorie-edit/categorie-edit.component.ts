@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/Models/category.model';
 import { Word } from 'src/app/Models/word.model';
 import { PreferencesManagementService } from 'src/app/Services/preferences-management.service';
@@ -24,7 +24,7 @@ export class CategorieEditComponent implements OnInit {
   addedWords: string[] = [];
   deletedWords: string[] = [];
 
-  constructor(private route: ActivatedRoute, private preferenceService: PreferencesManagementService) { }
+  constructor(private route: ActivatedRoute, private preferenceService: PreferencesManagementService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -86,12 +86,17 @@ export class CategorieEditComponent implements OnInit {
   save(form:NgForm) {
     if (this.category.name != '') {
       // call a service to save
+      this.preferenceService.createCategory(this.category.name, localStorage.get['user_id'],this.addedWords)
+        .subscribe((data:any) => {
+            // press close button
+            let element: HTMLElement = document.getElementById('modalClose') as HTMLButtonElement;
+            element.click();
+            // go to categories
+            this.router.navigateByUrl('/Categories')
+        })
 
-      // press close button
-      let element: HTMLElement = document.getElementById('modalClose') as HTMLButtonElement;
-      element.click();
 
-      // go to categories
+      
     }
   }
 
