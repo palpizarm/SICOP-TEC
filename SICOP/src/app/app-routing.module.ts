@@ -16,6 +16,8 @@ const routes: Routes = [
   { path: "Categories", component: CategoriesComponent},
   { path: 'Categories/:id', component: CategorieEditComponent},
   { path: 'userRegistration', component: UserRegistrationComponent},
+  { path: 'MainteceRegistration', component: CreatedMainteceAccountComponent},
+  { path: 'showFavInstitutions', component: ShowFavInstitutionsComponent},
   { path: 'FavInstitutions', component: ShowFavInstitutionsComponent},
   { path: 'MainteceRegistration', component: CreatedMainteceAccountComponent}
 ]
