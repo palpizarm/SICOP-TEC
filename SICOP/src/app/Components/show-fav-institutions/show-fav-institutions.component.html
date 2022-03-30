@@ -3,17 +3,17 @@
     <div class="button-group">
         <button type="button" class="action-button" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</button>
         
-        <button type="button" class="action-button">Eliminar</button> 
+        <button type="button" class="action-button" (click)="deleteInstitutions()">Eliminar</button> 
     </div>
 
     <div class="divTable divTableStyle">
         <div class="divTableHeading">
             <div class="divTableRow">
                 <div class="divTableHead Seleccionar">Seleccionar</div>
-                <div class="divTableHead cedJuridica">Cedula Juridica</div>
+                <div class="divTableHead cedJuridica">Cédula Jurídica</div>
                 <div class="divTableHead Abreviatura">Abreviatura</div>
                 <div class="divTableHead Nombre">Nombre</div>
-                <div class="divTableHead Editar">Editar</div>
+                <!-- <div class="divTableHead Editar">Editar</div> -->
             </div>
         </div>
         <div class="divTableBody">
@@ -28,11 +28,11 @@
                 <div class="divTableCell cedJuridica">{{ institution.legal_id }}</div>
                 <div class="divTableCell Abreviatura">{{ institution.abbreviation }}</div>
                 <div class="divTableCell Nombre">{{ institution.name }}</div>
-                <div class="divTableCell Editar">
+                <!-- <div class="divTableCell Editar">
                     <button>
                         <i class="far fa-edit"></i>
                     </button>
-                </div>
+                </div> -->
             </div>
         </div>    
 </div>

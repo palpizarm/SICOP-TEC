@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AccountManagementService {
 
-  url:string = 'http://localhost:3000/gestionCuenta/';
+  url:string = 'http://localhost:3000/gestionCuenta';
   
   constructor(private http : HttpClient) { }
 
@@ -19,6 +19,13 @@ export class AccountManagementService {
     )
   }
 
+  getUsers = () => {
+    return this.http.get(
+      `${this.url}/getUsers`,
+     
+    )
+  }
+  
   getMaintenanceUsers = () => {
     return this.http.get(
       `${this.url}/getMaintenanceUsers`,
