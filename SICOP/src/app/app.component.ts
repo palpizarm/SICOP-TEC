@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { SidebarOptions } from './Classes/sidebar-options.model';
 import { Options } from './Models/options.model';
 import { AccountManagementService } from './Services/account-management.service';
@@ -17,7 +18,7 @@ export class AppComponent {
   displaySidebar: boolean = true;
   isLogged: boolean = false;
 
-  constructor(private accountService : AccountManagementService) {}
+  constructor(private accountService : AccountManagementService, private router: Router) {}
 
   ngOnInit(): void {
     this.accountService.isLoggedEmitter
@@ -29,6 +30,13 @@ export class AppComponent {
           localStorage.removeItem('roleID')
         }
       })
+  }
+
+  logout() {
+    localStorage.removeItem('userID')
+    localStorage.removeItem('roleID')
+    this.accountService.isLoggedEmit(false)
+    this.router.navigateByUrl('')
   }
   
 }
