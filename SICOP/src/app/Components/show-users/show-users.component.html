@@ -1,0 +1,122 @@
+<div class="container">
+  <p class="text-center fw-bold fs-4">Lista de Usuarios</p>
+  <div class="button-group">
+    <!-- <button type="button" class="action-button" (click)="deleteInstitutions()">
+      Eliminar
+    </button> -->
+  </div>
+  <div class="d-flex">
+    <div *ngIf="false" class="form-check form-check-inline">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="clientUsers" [checked]="clientUsers"
+        (change)="loadClientUsers()" [(ngModel)]="clientUsers" />
+      <label class="form-check-label" for="clientUsers">Clientes</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="maintanceUsers" [checked]="maintanceUsers"
+        (change)="loadMaintanceUsers()" [(ngModel)]="maintanceUsers" />
+      <label class="form-check-label" for="maintanceUsers">Mantenimiento</label>
+    </div>
+
+    <div class="w-100 text-end">
+      <button class="downloadButton" (click)="downloadUsers()">Descargar<i
+          class="fas fa-file-download downloadIcon"></i></button>
+    </div>
+  </div>
+
+  <div class="divTable divTableStyle">
+    <div class="divTableHeading">
+      <div class="divTableRow">
+        <div class="divTableHead Seleccionar">Seleccionar</div>
+        <div class="divTableHead Nombre">Nombre</div>
+        <div class="divTableHead Correo">Correo electrónico</div>
+        <div class="divTableHead Tipo">Tipo de Usuario</div>
+        <div class="divTableHead Estado">Estado</div>
+        <div class="divTableHead Accion">Acción</div>
+      </div>
+    </div>
+
+    <div class="divTableBody">
+      <ng-template [ngIf]="!clientUsers && !maintanceUsers">
+        <div class="divTableRow" *ngFor="
+            let user of userList
+              | paginate: { itemsPerPage: 10, currentPage: page };
+            let i = index
+          ">
+          <div class="divTableCell Seleccionar">
+            <input type="checkbox" id="{{ user.user_id }}" />
+          </div>
+          <div class="divTableCell Nombre">{{ user.name }}</div>
+          <div class="divTableCell Correo">
+            {{ user.email }}
+          </div>
+          <div class="divTableCell Tipo">
+            {{ user.role }}
+          </div>
+          <div class="divTableCell Estado">
+            {{ status(user.actived) }}
+          </div>
+          <div class="divTabCell">
+            <button class="btn" (click)="inactiveUser(user.user_id)"><i class="fas fa-user-alt-slash"></i></button>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template [ngIf]="clientUsers">
+        <div class="divTableRow" *ngFor="
+            let user of clientUserList
+              | paginate: { itemsPerPage: 10, currentPage: page };
+            let i = index
+          ">
+          <div class="divTableCell Seleccionar">
+            <input type="checkbox" id="{{ user.user_id }}" />
+          </div>
+          <div class="divTableCell Nombre">{{ user.name }}</div>
+          <div class="divTableCell Correo">
+            {{ user.email }}
+          </div>
+          <div class="divTableCell Tipo">
+            {{ user.role }}
+          </div>
+          <div class="divTableCell Estado">
+            {{ status(user.actived) }}
+          </div>
+          <div class="divTabCell">
+            <button class="btn" (click)="inactiveUser(user.user_id)"><i class="fas fa-user-alt-slash"></i></button>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template [ngIf]="maintanceUsers">
+        <div class="divTableRow" *ngFor="
+            let user of maintanceUserList
+              | paginate: { itemsPerPage: 10, currentPage: page };
+            let i = index
+          ">
+          <div class="divTableCell Seleccionar">
+            <input type="checkbox" id="{{ user.user_id }}" />
+          </div>
+          <div class="divTableCell Nombre">{{ user.name }}</div>
+          <div class="divTableCell Correo">
+            {{ user.email }}
+          </div>
+          <div class="divTableCell Tipo">
+            {{ user.role }}
+          </div>
+          <div class="divTableCell Estado">
+            {{ status(user.actived) }}
+          </div>
+          <div class="divTabCell">
+            <button class="btn" (click)="inactiveUser(user.user_id)"><i class="fas fa-user-alt-slash"></i></button>
+          </div>
+        </div>
+      </ng-template>
+      <div class="divTableRow controls">
+
+
+      </div>
+    </div>
+  </div>
+  <pagination-controls class="my-pagination" (pageChange)="page = $event" responsive="true" previousLabel="Anterior"
+    nextLabel="Siguiente"></pagination-controls>
+</div>
