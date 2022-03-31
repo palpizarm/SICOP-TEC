@@ -12,7 +12,7 @@ import Swal from 'sweetalert2'
 })
 export class LoginPageComponent implements OnInit {
 
-  user: User = new User("","","");
+  user: User = new User();
 
   constructor(
     private accountService : AccountManagementService, 
@@ -27,8 +27,6 @@ export class LoginPageComponent implements OnInit {
     if (form.errors) return;
     this.accountService.login(this.user.email, this.user.password).subscribe(
       (data:any) => {
-        
-        
         if(data.code>0)
         {
           let userInfo = data.data.rows[0];
@@ -36,6 +34,8 @@ export class LoginPageComponent implements OnInit {
           localStorage.setItem('roleID', userInfo.role_id);
 
           this.router.navigateByUrl('/FavInstitutions')
+          // notify all component that users is logged
+          this.accountService.isLoggedEmit(true)
         }
         else{
           Swal.fire(
@@ -43,10 +43,7 @@ export class LoginPageComponent implements OnInit {
             data.msg,
             'error'
           )
-        }
-        // do a observable to notify account created
-
-         
+        }         
     });
 
   }

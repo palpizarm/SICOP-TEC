@@ -6,11 +6,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PreferencesManagementService {
 
-  url:string = 'http://localhost:3000/category/';
+  url:string = 'http://localhost:3000/category';
   
   constructor(private http : HttpClient) { }
 
   createCategory = (name:string, user_id:number, words:string[]) => {
+    console.log(name,user_id,words)
     return this.http.post(
       `${this.url}/createCategory`,
       {
@@ -49,14 +50,14 @@ export class PreferencesManagementService {
 
   getCategoryById = (category_id:number) => {
     return this.http.get(
-      `${this.url}getCategory/${category_id}`
+      `${this.url}/getCategory/${category_id}`
     )
   }
 
 
   deleteCategory = (category_id:number) => {
     return this.http.delete(
-      `${this.url}${category_id}`
+      `${this.url}/${category_id}`
     )
   }
 

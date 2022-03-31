@@ -15,9 +15,8 @@ export class CategoriesComponent implements OnInit {
   constructor(private preferenceService: PreferencesManagementService) { }
 
   ngOnInit(): void {
-    localStorage.setItem('user_id', '1')
-    if (localStorage.getItem('user_id')) {
-      this.preferenceService.getCategories(parseInt(localStorage.getItem('user_id')))
+    if (localStorage.getItem('userID')) {
+      this.preferenceService.getCategories(parseInt(localStorage.getItem('userID')))
         .subscribe((data: any) => {
           this.categories = data.data.rows
         })
@@ -26,10 +25,10 @@ export class CategoriesComponent implements OnInit {
   }
 
   updateList() {
-    if (localStorage.getItem('user_id')) {
+    if (localStorage.getItem('userID')) {
       Swal.fire({ text: 'Cargando...', allowOutsideClick: false })
       Swal.showLoading()
-      this.preferenceService.getCategories(parseInt(localStorage.getItem('user_id')))
+      this.preferenceService.getCategories(parseInt(localStorage.getItem('userID')))
         .subscribe((data: any) => {
           this.categories = data.data.rows
         })

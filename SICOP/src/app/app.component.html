@@ -12,9 +12,9 @@
         </div>
 
         <div *ngIf="isLogged" class="text-end">
-            <button type="button" class="btn btn-outline-light me-2"><i class="fas fa-arrow-left"></i></button>
             <button type="button" class="btn btn-outline-light me-2"><i class="fas fa-bell fx-3"></i></button>
-            <button type="button" class="btn btn-outline-light"><i class="fas fa-user"></i></button>
+            <button type="button" class="btn btn-outline-light me-2"><i class="fas fa-user"></i></button>
+            <button (click)="logout()" type="button" class="btn btn-outline-light"> Salir <i class="fas fa-sign-out-alt"></i></button>
         </div>
     </div>
 </header>
@@ -31,13 +31,6 @@
                         </a>
                     </li>
                 </ul>
-                <hr>
-                <div class="align-self-end">
-                    <button type="button" class="btn btn-outline-secondary text-dark">
-                        Salir
-                        <i class="fas fa-sign-out-alt"></i>
-                    </button>
-                </div>
             </div>
         </div>
         <div class="col">

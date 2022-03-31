@@ -7,19 +7,18 @@ import { ShowFavInstitutionsComponent } from './Components/show-fav-institutions
 import { CreatedMainteceAccountComponent } from './Components/UserRegistration/created-maintece-account/created-maintece-account.component';
 import { UserRegistrationComponent } from './Components/userRegistration/user-registration/user-registration.component';
 import { ShowUsersComponent } from './Components/show-users/show-users.component';
+import { IsLoggedGuard } from './Guard/is-logged.guard';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent},
   { path: 'userRegistration', component: UserRegistrationComponent},
-  { path: 'MainteceRegistration', component: CreatedMainteceAccountComponent},
-  { path: 'Users',component:ShowUsersComponent},
-  { path: "Categories", component: CategoriesComponent},
-  { path: 'Categories/:id', component: CategorieEditComponent},
-  { path: 'userRegistration', component: UserRegistrationComponent},
-  { path: 'MainteceRegistration', component: CreatedMainteceAccountComponent},
-  { path: 'showFavInstitutions', component: ShowFavInstitutionsComponent},
-  { path: 'FavInstitutions', component: ShowFavInstitutionsComponent},
-  { path: 'MainteceRegistration', component: CreatedMainteceAccountComponent}
+  { path: 'MainteceRegistration', component: CreatedMainteceAccountComponent, canActivate: [IsLoggedGuard]},
+  { path: 'Users', component: ShowUsersComponent, canActivate: [IsLoggedGuard]},
+  { path: "Categories", component: CategoriesComponent, canActivate: [IsLoggedGuard]},
+  { path: 'Categories/:id', component: CategorieEditComponent, canActivate: [IsLoggedGuard]},
+  { path: 'showFavInstitutions', component: ShowFavInstitutionsComponent, canActivate: [IsLoggedGuard]},
+  { path: 'FavInstitutions', component: ShowFavInstitutionsComponent, canActivate: [IsLoggedGuard]},
+  { path: '**', pathMatch: 'full', redirectTo: 'FavInstitutions'}
 ]
 
 @NgModule({

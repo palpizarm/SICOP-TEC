@@ -65,7 +65,6 @@ export class FavoriteInstitutionsManagementService {
 
 const compareInstitution = (name: string, institutionList: any) => {
   var result: boolean = true
-  console.log(institutionList)
   for (let i = 0; i < institutionList.length; i++) {
     if (institutionList[i].name == name) result = false
   }

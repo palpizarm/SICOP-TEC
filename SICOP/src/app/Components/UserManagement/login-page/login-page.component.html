@@ -1,4 +1,5 @@
 <div class="row">
+
     <div class="col min-vh-100 d-flex justify-content-center align-items-center">
         <div class="pb-5">
             <form (ngSubmit)="login(form)" #form="ngForm" class="validate-form text-center mt-5">
@@ -25,7 +26,7 @@
                     menos 6 letras
                 </span>
 
-                <div class="changePassword">
+                <div class="changePassword my-4">
                     <a href="">¿Olvidó su contraseña?</a>
                 </div>
 
@@ -37,7 +38,7 @@
                 </div>
 
             </form>
-            <div class="text-secondary text-center">
+            <div class="text-secondary text-center mt-5">
                 <p> ¿No tienes una cuenta? <a [routerLink]="['/userRegistration']">Regístrate</a></p>
             </div>
         </div>

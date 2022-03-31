@@ -32,6 +32,7 @@ export class CategorieEditComponent implements OnInit {
     this.route.params.subscribe(parms => {
       if (parms['id'] == 'new') {
         this.edit = false
+        this.category = new Category()
       } else {
         
         this.edit = true
@@ -58,6 +59,7 @@ export class CategorieEditComponent implements OnInit {
         this.ngOnInit();
         this.addedWords = []
         this.deletedWords = []
+        this.router.navigateByUrl('/Categories')
       })
   }
 
@@ -84,20 +86,23 @@ export class CategorieEditComponent implements OnInit {
 
   // call a service to save a new category
   save(form:NgForm) {
-    if (this.category.name != '') {
-      // call a service to save
-      this.preferenceService.createCategory(this.category.name, localStorage.get['user_id'],this.addedWords)
-        .subscribe((data:any) => {
-            // press close button
-            let element: HTMLElement = document.getElementById('modalClose') as HTMLButtonElement;
-            element.click();
-            // go to categories
-            this.router.navigateByUrl('/Categories')
-        })
-
-
-      
+    if (this.addedWords.length == 0) {
+      Swal.fire({text:'Ingrese al menos una palabra dentro la categoria', icon: 'error', confirmButtonText:'Aceptar'})
+      return
+    }    
+    if (this.category.name == '') {
+      Swal.fire({text:'Ingrese el nombre de la categoria', icon: 'error', confirmButtonText:'Aceptar'})
+      return
     }
+    // call a service to save
+    this.preferenceService.createCategory(this.category.name, parseInt(localStorage.getItem('userID')),this.addedWords)
+      .subscribe((data:any) => {
+          // press close button
+          let element: HTMLElement = document.getElementById('modalClose') as HTMLButtonElement;
+          element.click();
+          // go to categories
+          this.router.navigateByUrl('/Categories')
+      })      
   }
 
 }
