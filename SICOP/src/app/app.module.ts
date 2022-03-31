@@ -34,7 +34,7 @@ import { AppRoutingModule } from './app-routing.module';
     NgxPaginationModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
