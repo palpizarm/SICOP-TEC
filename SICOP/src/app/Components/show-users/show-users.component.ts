@@ -60,6 +60,13 @@ export class ShowUsersComponent implements OnInit {
         .subscribe((data:any) => {
           if (data.code > 0) {
             Swal.fire({text:'Usuario inactivado',icon:'success'})
+            if (this.maintanceUsers) {
+              this.loadMaintanceUsers()
+            } else if (this.clientUsers) {
+              this.loadClientUsers()
+            } else {
+              this.loadUsers()
+            }
           } else {
             Swal.fire({text:data.msg, icon:'error'})
           }
