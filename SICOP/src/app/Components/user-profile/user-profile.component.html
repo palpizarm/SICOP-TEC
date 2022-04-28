@@ -1,0 +1,60 @@
+<h1 class="title-font-color fs-1 fw-bolder my-5 text-center">
+    Mi Cuenta
+</h1>
+<form (ngSubmit)="editInfo(form)" #form="ngForm" class="validate-form">
+    <div class="row ">
+        <div class="col">
+                <i class="fas fa-user"></i>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                <input class="border-top-0 border-end-0 border-start-0 fs-5" type="text" name="userName" [(ngModel)]="user.name"
+                    required userName placeholder="Nombre" style="min-width: 400px; height: 50px;">
+                
+                <span *ngIf="form.submitted && form.controls['email'].errors" class="text-danger animated fadeIn">El
+                    nombre es obligatorio</span>
+            </div>
+            <div class="mb-3">
+                <input class="border-top-0 border-end-0 border-start-0 fs-5" type="text" name="email" [(ngModel)]="user.email"
+                    required email placeholder="Correo" style="min-width: 400px; height: 50px;">
+                
+                <span *ngIf="form.submitted && form.controls['email'].errors" class="text-danger animated fadeIn">El
+                    correo es obligatorio</span>
+            </div>
+
+            <h6 class="fw-bold"> Cambio de contraseña</h6>
+            <div class="mb-3">
+                <input class="border-top-0 border-end-0 border-start-0 fs-5" type="text" name="userName" [(ngModel)]="user.name"
+                    required userName placeholder="Contraseña Actual" style="min-width: 400px; height: 50px;">
+                
+                <span *ngIf="form.submitted && form.controls['email'].errors" class="text-danger animated fadeIn">El
+                    nombre es obligatorio</span>
+            </div>
+            <div class="mb-3">
+                <input class="border-top-0 border-end-0 border-start-0 fs-5" type="text" name="userName" [(ngModel)]="user.name"
+                    required userName placeholder="Nueva Contraseña" style="min-width: 400px; height: 50px;">
+                
+                <span *ngIf="form.submitted && form.controls['email'].errors" class="text-danger animated fadeIn">El
+                    nombre es obligatorio</span>
+            </div>
+            <div class="mb-3">
+                <input class="border-top-0 border-end-0 border-start-0 fs-5" type="text" name="userName" [(ngModel)]="user.name"
+                    required userName placeholder="Confirmar Nueva Contraseña" style="min-width: 400px; height: 50px;">
+                
+                <span *ngIf="form.submitted && form.controls['email'].errors" class="text-danger animated fadeIn">El
+                    nombre es obligatorio</span>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary me-2" type="submit">
+            Actualizar
+            <i>icono</i>
+        </button>    
+        <button class="btn btn-primary">
+            Cancelar
+            <i>icono</i>
+        </button>
+    </div>
+
+</form>
