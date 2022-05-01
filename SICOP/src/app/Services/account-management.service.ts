@@ -66,9 +66,15 @@ export class AccountManagementService {
     )
   }
 
-  updateCount = (user_id: number, name: string, email: string) => {
+  getAccountInfo() {
+      return this.http.get(
+        `${this.url}/getAccount/${localStorage.getItem('userID')}`
+      )
+  }
+
+  updateAccount = (user_id: number, name: string, email: string) => {
     return this.http.patch(
-      `${this.url}/updateCount`,
+      `${this.url}/updateAccount`,
       {
         "user_id": user_id,
         "name": name,
