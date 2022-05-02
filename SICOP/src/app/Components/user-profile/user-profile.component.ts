@@ -12,18 +12,18 @@ import Swal from 'sweetalert2';
 })
 export class UserProfileComponent implements OnInit {
 
-  user:User = new User()
-  editDisabled:Boolean = true
-  changePassDisabled:Boolean = true
+  user: User = new User()
+  editDisabled: Boolean = true
+  changePassDisabled: Boolean = true
   oldPassIncorrect = false
   adminAccount = false
   oldPassword = ''
 
-  constructor(private accountService : AccountManagementService, private router:Router) { }
+  constructor(private accountService: AccountManagementService, private router: Router) { }
 
   ngOnInit(): void {
     this.accountService.getAccountInfo()
-      .subscribe((data:any) => {
+      .subscribe((data: any) => {
         if (data.code > 0) {
           console.log(data)
           this.user = data.data.rows[0]
@@ -35,19 +35,22 @@ export class UserProfileComponent implements OnInit {
   }
 
   // form.value get all values of the form in a json object
-  editInfo(form:NgForm) {
+  editInfo(form: NgForm, option: number) {
     let obj = form.value
-    if (!this.changePassDisabled) {
-      this.accountService.updatePassword(Number(localStorage.getItem('userID')), this.oldPassword, obj.password)
-        .subscribe((data:any) => {
-          if (data.code == -4) {
-            this.oldPassIncorrect = true
-          } else if (data.code > 0) {
+
+    if (option == 2) {
+      this.accountService.updatePassword(Number(localStorage.getItem('userID')), this.oldPassword, this.user.password)
+        .subscribe((data: any) => {
+          console.log(data)
+          if (data.code > 0) {
             Swal.fire({
               title: 'Contraseña actualizada correctamente.',
               icon: 'success',
               confirmButtonText: 'Aceptar'
             })
+            this.disabledInputs(2)
+          } else if (data.code == -4) {
+            this.oldPassIncorrect = true
           } else {
             Swal.fire({
               title: data.msg,
@@ -55,29 +58,49 @@ export class UserProfileComponent implements OnInit {
               confirmButtonText: 'Aceptar'
             })
           }
-        })
+        },
+          (err: any) => {
+            Swal.fire({
+              title: err.error.msg,
+              icon: 'error',
+              confirmButtonText: 'Aceptar'
+            })
+          })
     }
-    if(!this.editDisabled) {
+    if (option == 1) {
       this.accountService.updateAccount(Number(localStorage.getItem('userID')), obj.userName, obj.email)
-        .subscribe((data:any) => {
+        .subscribe((data: any) => {
           if (data.code > 0) {
             Swal.fire({
               icon: 'success',
               title: 'Datos actualizados',
               showConfirmButton: true
             })
+            this.disabledInputs(1)
           }
-        })
+        },
+          (err: any) => {
+            Swal.fire({
+              title: err.error.msg,
+              icon: 'error',
+              confirmButtonText: 'Aceptar'
+            })
+          })
     }
-    this.disabledInputs()
   }
 
-  disabledInputs() {
-    this.editDisabled = true
-    this.changePassDisabled = true
-    this.user.password = ''
-    this.user.password2 = ''
-    this.oldPassword = ''
+  disabledInputs(option: number) {
+
+    if (option == 2) {
+      this.changePassDisabled = true
+      this.user.password = ''
+      this.user.password2 = ''
+      this.oldPassword = ''
+      this.oldPassIncorrect = false
+    } else if (option == 1) {
+      this.editDisabled = true
+      this.ngOnInit()
+    }
   }
 
   enableEdit() {
@@ -86,32 +109,33 @@ export class UserProfileComponent implements OnInit {
 
   enableChangePassword() {
     this.changePassDisabled = false
-  }  
+  }
 
   deleteAccount() {
     Swal.fire({
       title: 'Eliminar cuenta',
       cancelButtonText: 'Cancelar',
       confirmButtonText: 'Confirmar',
-      text: 'Confirmar eliminación'
+      text: 'Confirmar eliminación',
+      showCancelButton: true
     })
-    .then(data => {
-      if (data.isConfirmed) {
-        this.accountService.deleteUser(Number(localStorage.getItem('userID')))
-        .subscribe((data:any) => {
-          if (data.code > 0) {
-            Swal.fire({
-              icon: 'success',
-              title: 'Cuenta eliminda con exito',
-              showConfirmButton: false,
-              timer: 1000
-            }).then((result) => {
-              this.router.navigateByUrl('/')
+      .then(data => {
+        if (data.isConfirmed) {
+          this.accountService.deleteUser(Number(localStorage.getItem('userID')))
+            .subscribe((data: any) => {
+              if (data.code > 0) {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Cuenta eliminda con exito',
+                  showConfirmButton: false,
+                  timer: 1000
+                }).then((result) => {
+                  this.router.navigateByUrl('/')
+                })
+              }
             })
-          }
-        })
-      }
-    })
+        }
+      })
   }
 
 }

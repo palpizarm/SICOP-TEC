@@ -62,7 +62,7 @@ export class AccountManagementService {
 
   deleteUser = (user_id:number) => {
     return this.http.delete(
-      `${this.url}/${user_id}`
+      `${this.url}/deleteUser/${user_id}`
     )
   }
 
