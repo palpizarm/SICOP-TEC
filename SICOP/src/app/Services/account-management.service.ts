@@ -59,5 +59,39 @@ export class AccountManagementService {
       }
     )
   }
+
+  deleteUser = (user_id:number) => {
+    return this.http.delete(
+      `${this.url}/deleteUser/${user_id}`
+    )
+  }
+
+  getAccountInfo() {
+      return this.http.get(
+        `${this.url}/getAccount/${localStorage.getItem('userID')}`
+      )
+  }
+
+  updateAccount = (user_id: number, name: string, email: string) => {
+    return this.http.patch(
+      `${this.url}/updateAccount`,
+      {
+        "user_id": user_id,
+        "name": name,
+        "email": email
+      }
+    )
+  }
+
+  updatePassword = (user_id: number, old_password: string, new_password: string) => {
+    return this.http.patch(
+      `${this.url}/updatePassword`,
+      {
+        "user_id": user_id,
+        "old_password": old_password,
+        "new_password": new_password
+      }
+    )
+  }
   
 }
