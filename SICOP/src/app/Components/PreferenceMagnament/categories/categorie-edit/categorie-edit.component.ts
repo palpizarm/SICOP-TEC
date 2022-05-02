@@ -23,12 +23,12 @@ export class CategorieEditComponent implements OnInit {
   words: Word[] = [];
   addedWords: string[] = [];
   deletedWords: string[] = [];
+  userType:number=0
 
   constructor(private route: ActivatedRoute, private preferenceService: PreferencesManagementService, private router: Router) { }
 
   ngOnInit(): void {
-
-
+    this.userType = Number(localStorage.getItem('roleID'))
     this.route.params.subscribe(parms => {
       if (parms['id'] == 'new') {
         this.edit = false
@@ -104,5 +104,17 @@ export class CategorieEditComponent implements OnInit {
           this.router.navigateByUrl('/Categories')
       })      
   }
+
+  goBack() {
+    // go back to client page
+    if (this.userType == 3) {
+      this.router.navigateByUrl('/Categories')
+    } 
+    // back to admin and mantaince page 
+    else {
+      this.router.navigateByUrl('/CategoriesList')
+    }
+  }
+
 
 }
