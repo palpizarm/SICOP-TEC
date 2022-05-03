@@ -11,12 +11,21 @@ export class PreferencesManagementService {
   constructor(private http : HttpClient) { }
 
   createCategory = (name:string, user_id:number, words:string[]) => {
-    console.log(name,user_id,words)
     return this.http.post(
       `${this.url}/createCategory`,
       {
         "name":name,
         "user_id":user_id,
+        "words":words
+      }
+    )
+  }
+
+  createCategoryAdmin = (name:string, words:string[]) => {
+    return this.http.post(
+      `${this.url}/createCategoryAdmin`,
+      {
+        "name":name,
         "words":words
       }
     )

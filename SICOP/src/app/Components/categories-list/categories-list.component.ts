@@ -14,15 +14,20 @@ export class CategoriesListComponent implements OnInit {
   categoriesList:Category[] = []
 
 
-  constructor(private categoriesService : PreferencesManagementService) { }
+  constructor(private preferenceService : PreferencesManagementService) { }
 
   ngOnInit(): void {
-    this.categoriesList.push(new Category(4,'test'))
-    
+    this.loadCategories();
   }
 
   loadCategories() {
-
+    if (localStorage.getItem('userID')) {
+      // get the admin categories in the db, the mantaince and admin have access to the same categories.
+      this.preferenceService.getCategories(-1)
+        .subscribe((data: any) => {
+          this.categoriesList = data.data.rows
+        })
+    }
   }
 
   deleteCategories() {
@@ -33,7 +38,7 @@ export class CategoriesListComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, eliminalas!',
+      confirmButtonText: 'Si, elimnar!',
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
@@ -42,7 +47,10 @@ export class CategoriesListComponent implements OnInit {
         {
           if(inputList[i].checked)
           {
-            // call the service
+            this.preferenceService.deleteCategory(parseInt(inputList[i].id))
+              .subscribe((data:any) => {
+                this.loadCategories();
+              })
           }
         }
         Swal.fire(
