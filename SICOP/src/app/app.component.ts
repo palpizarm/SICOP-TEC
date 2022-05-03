@@ -37,5 +37,13 @@ export class AppComponent {
     this.accountService.isLoggedEmit(false)
     this.router.navigateByUrl('')
   }
+
+  showNotification() {
+    let btnPosition = document.getElementById("notificationBtn");
+    let modal = document.getElementById('notificationModal');
+    modal.style.left = `${btnPosition.offsetLeft}px !important;`;
+    modal.style.left = `${btnPosition.offsetTop - 10}px !important;`;
+  }
+
   
 }
