@@ -10,6 +10,9 @@ import { ShowUsersComponent } from './Components/show-users/show-users.component
 import { IsLoggedGuard } from './Guard/is-logged.guard';
 import { ShowTendersComponent } from './Components/TenderManagement/show-tenders/show-tenders.component';
 import { ShowFavTendersComponent } from './Components/TenderManagement/show-fav-tenders/show-fav-tenders.component';
+import { CategoriesListComponent } from './Components/categories-list/categories-list.component';
+import { UserProfileComponent } from './Components/user-profile/user-profile.component';
+
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent},
@@ -22,6 +25,8 @@ const routes: Routes = [
   { path: 'FavInstitutions', component: ShowFavInstitutionsComponent, canActivate: [IsLoggedGuard]},
   { path: 'Tenders', component: ShowTendersComponent, canActivate: [IsLoggedGuard]},
   { path: 'FavTenders', component: ShowFavTendersComponent, canActivate: [IsLoggedGuard]},
+  { path: 'CategoriesList', component: CategoriesListComponent, canActivate: [IsLoggedGuard]},
+  { path: 'userProfile', component: UserProfileComponent, canActivate: [IsLoggedGuard]},
   { path: '**', pathMatch: 'full', redirectTo: 'FavInstitutions'}
 ]
 

@@ -50,6 +50,13 @@ export class LoginPageComponent implements OnInit {
             'error'
           )
         }         
+    },
+    (err:any)=> {
+      Swal.fire(
+        'Oops',
+        err.error.msg,
+        'error'
+      )
     });
 
   }

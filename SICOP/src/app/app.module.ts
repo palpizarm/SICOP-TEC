@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserRegistrationComponent } from './Components/userRegistration/user-registration/user-registration.component';
 import { ShowFavInstitutionsComponent } from './Components/show-fav-institutions/show-fav-institutions.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CategoriesListComponent } from './Components/categories-list/categories-list.component';
+import { UserProfileComponent } from './Components/user-profile/user-profile.component';
 import { ShowTendersComponent } from './Components/TenderManagement/show-tenders/show-tenders.component';
 import { ShowFavTendersComponent } from './Components/TenderManagement/show-fav-tenders/show-fav-tenders.component';
 
@@ -31,7 +33,9 @@ import { ShowFavTendersComponent } from './Components/TenderManagement/show-fav-
     ShowFavInstitutionsComponent,
     ShowUsersComponent,
     ShowTendersComponent,
-    ShowFavTendersComponent
+    ShowFavTendersComponent,
+    CategoriesListComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
