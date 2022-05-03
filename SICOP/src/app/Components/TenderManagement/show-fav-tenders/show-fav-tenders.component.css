@@ -1,0 +1,90 @@
+.button-group{
+    margin-top: 20px;
+    position: fixed;
+    bottom: 25%;
+    right: 10%;
+}
+
+.button-group .action-button{
+    background: rgb(24, 41, 201); 
+    color: white;
+    border: 0 none;
+    border-radius: 5px;
+    cursor: pointer; 
+    min-width: 130px;
+    margin: 0 3px;
+    padding: 5px 5px;
+    text-transform: uppercase; 
+    display: inline-block;
+}
+
+.button-group .my-pagination /deep/.ngx-pagination{
+    /* margin-top: 10px; */
+    display: inline-block;
+  }
+
+.button-group .action-button:hover{
+    background: rgb(15, 27, 131);
+    border-color: rgb(15, 27, 131);
+}
+
+div.divTableStyle {
+    border: 1px solid #FFFFFF;
+    width: 90%;
+    height: 90px;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .divTable.divTableStyle .Seleccionar {
+    border: 1px solid #FFFFFF;
+    width: 10%;
+    height: 30px;
+  }
+  .divTable.divTableStyle .id {
+    border: 1px solid #FFFFFF;
+    width: 10%;
+  }
+
+  .divTable.divTableStyle .Nombre {
+    border: 1px solid #FFFFFF;
+    width: 25%;
+  }
+  .divTable.divTableStyle .Descripción {
+    border: 1px solid #FFFFFF;
+    width: 55%;
+  }
+
+  .divTable.divTableStyle .divTableBody .divTableCell {
+    font-size: 13px;
+  }
+  .divTable.divTableStyle .divTableRow:nth-child(even) {
+    background: #e0e0e0;
+  }
+  .divTable.divTableStyle .divTableHeading {
+    background: #47494e;
+    border-bottom: 5px solid #FFFFFF;
+  }
+  .divTable.divTableStyle .divTableHeading .divTableHead {
+    font-size: 17px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    border-left: 0px solid #FFFFFF;
+  }
+  .divTable.divTableStyle .divTableHeading .divTableHead:first-child {
+    border-left: none;
+  }
+  
+  .divTableStyle .tableFootStyle {
+    font-size: 14px;
+  }
+  /* DivTable.com */
+  .divTable{ display: table; }
+  .divTableRow { display: table-row; }
+  .divTableHeading { display: table-header-group;}
+  .divTableCell, .divTableHead { display: table-cell;}
+  .divTableHeading { display: table-header-group;}
+  .divTableFoot { display: table-footer-group;}
+  .divTableBody { display: table-row-group;}

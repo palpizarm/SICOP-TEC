@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserRegistrationComponent } from './Components/userRegistration/user-registration/user-registration.component';
 import { ShowFavInstitutionsComponent } from './Components/show-fav-institutions/show-fav-institutions.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ShowTendersComponent } from './Components/TenderManagement/show-tenders/show-tenders.component';
+import { ShowFavTendersComponent } from './Components/TenderManagement/show-fav-tenders/show-fav-tenders.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { AppRoutingModule } from './app-routing.module';
     CreatedMainteceAccountComponent,
     ShowFavInstitutionsComponent,
     ShowFavInstitutionsComponent,
-    ShowUsersComponent
+    ShowUsersComponent,
+    ShowTendersComponent,
+    ShowFavTendersComponent
   ],
   imports: [
     BrowserModule,

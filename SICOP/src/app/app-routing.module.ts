@@ -8,6 +8,8 @@ import { CreatedMainteceAccountComponent } from './Components/UserRegistration/c
 import { UserRegistrationComponent } from './Components/userRegistration/user-registration/user-registration.component';
 import { ShowUsersComponent } from './Components/show-users/show-users.component';
 import { IsLoggedGuard } from './Guard/is-logged.guard';
+import { ShowTendersComponent } from './Components/TenderManagement/show-tenders/show-tenders.component';
+import { ShowFavTendersComponent } from './Components/TenderManagement/show-fav-tenders/show-fav-tenders.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent},
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'Categories/:id', component: CategorieEditComponent, canActivate: [IsLoggedGuard]},
   { path: 'showFavInstitutions', component: ShowFavInstitutionsComponent, canActivate: [IsLoggedGuard]},
   { path: 'FavInstitutions', component: ShowFavInstitutionsComponent, canActivate: [IsLoggedGuard]},
+  { path: 'Tenders', component: ShowTendersComponent, canActivate: [IsLoggedGuard]},
+  { path: 'FavTenders', component: ShowFavTendersComponent, canActivate: [IsLoggedGuard]},
   { path: '**', pathMatch: 'full', redirectTo: 'FavInstitutions'}
 ]
 
