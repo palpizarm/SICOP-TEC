@@ -1,0 +1,34 @@
+<div class="container">
+  <p class="text-center fw-bold fs-4">Lista de categorias</p>
+  <div class="button-group">
+    <button type="button" class="btn action-button me-5" [routerLink]="['/Categories', 'new']">Agregar</button>
+    <button type="button" class="btn btn-danger" (click)="deleteCategories()">Eliminar</button>
+  </div>
+
+  <div class="divTable divTableStyle">
+    <div class="divTableHeading">
+      <div class="divTableRow">
+        <div class="divTableHead cell">Seleccionar</div>
+        <div class="divTableHead cell">Nombre</div>
+        <div class="divTableHead cell"></div>
+      </div>
+    </div>
+
+    <div class="divTableBody">
+      <div class="divTableRow"
+        *ngFor="let category of categoriesList | paginate: { itemsPerPage: 10, currentPage: page }; let i = index">
+        <div class="divTableCell cell">
+          <input type="checkbox" id="{{ category.category_id }}">
+        </div>
+        <div class="divTableCell cell">{{ category.name }}</div>
+        <div class="divTableCell cell">
+          <button class="btn" [routerLink]="['/Categories/', category.category_id]">
+            <i class="far fa-edit"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pagination-controls class="my-pagination" (pageChange)="page = $event" responsive="true" previousLabel="Anterior"
+    nextLabel="Siguiente"></pagination-controls>
+</div>
