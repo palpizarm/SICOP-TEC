@@ -9,6 +9,8 @@ import { UserRegistrationComponent } from './Components/userRegistration/user-re
 import { ShowUsersComponent } from './Components/show-users/show-users.component';
 import { IsLoggedGuard } from './Guard/is-logged.guard';
 import { CategoriesListComponent } from './Components/categories-list/categories-list.component';
+import { UserProfileComponent } from './Components/user-profile/user-profile.component';
+
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent},
@@ -20,6 +22,7 @@ const routes: Routes = [
   { path: 'showFavInstitutions', component: ShowFavInstitutionsComponent, canActivate: [IsLoggedGuard]},
   { path: 'FavInstitutions', component: ShowFavInstitutionsComponent, canActivate: [IsLoggedGuard]},
   { path: 'CategoriesList', component: CategoriesListComponent, canActivate: [IsLoggedGuard]},
+  { path: 'userProfile', component: UserProfileComponent, canActivate: [IsLoggedGuard]},
   { path: '**', pathMatch: 'full', redirectTo: 'FavInstitutions'}
 ]
 

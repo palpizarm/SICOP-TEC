@@ -1,0 +1,28 @@
+.title-font-color {
+    color: #575454;
+}
+
+.bg-image {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn-update{
+    background-color: #0048D9;
+    color: white;
+}
+
+.btn-update :hover{
+    background-color: #022975;
+}
+
+.btn-cancel {
+    background-color: #AE1313;
+    color: white;
+}
+
+.btn-cancel:hover {
+    background-color: #9c0b0b;
+}
