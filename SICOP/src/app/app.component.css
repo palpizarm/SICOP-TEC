@@ -5,3 +5,13 @@
 .bg-navbar {
     background-color: #3670C9;
 }
+
+app-notification{
+    position: fixed;
+    margin-top: -100px;
+    margin-left: -100px;
+}
+
+.move-cursor {
+    cursor: default;
+}

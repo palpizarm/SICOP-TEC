@@ -41,10 +41,11 @@
         </div>
         <div class="col text-end">
             <button *ngIf="edit" (click)="update()" class="btn btn-primary me-1">Actualizar</button>
-            <a *ngIf="edit" [routerLink]="['/Categories']" class="btn btn-primary">Cancelar</a>
+            <button *ngIf="edit"  class="btn btn-primary" (click)="goBack()">Cancelar</button>
             <button *ngIf="!edit" data-bs-toggle="modal" data-bs-target="#confirmationModal"
                 class="btn btn-primary me-1">Guardar</button>
-            <a *ngIf="!edit" [routerLink]="['/Categories']" class="btn btn-primary">Ver grupos guardados</a>
+            <a *ngIf="!edit && this.userType == 3" [routerLink]="['/Categories']" class="btn btn-primary me-1">Ver grupos guardados</a>
+            <a *ngIf="!edit && this.userType != 3" [routerLink]="['/CategoriesList']" class="btn btn-primary">Volver a la lista</a>
         </div>
     </div>
 </div>
