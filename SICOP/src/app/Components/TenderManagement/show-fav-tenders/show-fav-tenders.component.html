@@ -1,0 +1,82 @@
+<ng-template [ngIf]="cargado">
+
+    <div class="container">
+        <p class="text-center fw-bold fs-4">Licitaciones favoritas</p>
+    
+        <div class="divTable divTableStyle">
+        <div class="divTableHeading">
+            <div class="divTableRow">
+            <div class="divTableHead Seleccionar">Seleccionar</div>
+            <div class="divTableHead id">ID</div>
+            <div class="divTableHead Nombre">Nombre</div>
+            <div class="divTableHead Descripción">Descripción</div>
+            </div>
+        </div>
+    
+        <div class="divTableBody">
+            <div 
+            class="divTableRow" 
+            *ngFor="let tender of favTendersList | paginate: { itemsPerPage: 10, currentPage: page }; let i = index" 
+            >
+            <div class="divTableCell Seleccionar">
+                <input type="checkbox" id="{{ tender.tender_id }}">
+            </div>
+            <div class="divTableCell id">{{ tender.tender_id }}</div>
+            <div class="divTableCell Nombre">{{ tender.name }}</div>
+            <div class="divTableCell Descripción">{{ tender.description }}</div>
+            </div>
+        </div>
+        </div>
+        <div class="divTableFoot">
+
+            <div class="button-group">
+                <pagination-controls
+                    class="my-pagination"
+                    (pageChange) = "page = $event"
+                    responsive="true"
+                    previousLabel="Anterior"
+                    nextLabel="Siguiente"
+                ></pagination-controls>
+
+                <!-- <button type="button" class="action-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Guardar en favoritos
+                </button> -->
+                <button type="button" class="action-button" (click)="deleteFavTenders()">Eliminar de favoritos</button> 
+            </div>
+
+        </div>
+        
+    </div>
+    
+    
+    
+        
+    <!-- Modal -->
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Agregar institucion favorita</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <label class="input-group-text" for="institutionSelect">Instituciones</label>
+                    </div>
+                    <select class="custom-select" id="institutionSelect">
+                        <ng-template ngFor let-institution [ngForOf]="institutionsList" let-i="index" let-f="first">
+                            <option *ngIf="f" selected>{{ institution.name }}</option>
+                            <option *ngIf="!f">{{ institution.name }}</option>
+                        </ng-template>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveInstitution()">Guardar institucion</button>
+            </div>
+        </div>
+        </div>
+    </div> -->
+</ng-template>
