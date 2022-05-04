@@ -15,6 +15,8 @@ import { ShowFavInstitutionsComponent } from './Components/show-fav-institutions
 import { AppRoutingModule } from './app-routing.module';
 import { CategoriesListComponent } from './Components/categories-list/categories-list.component';
 import { UserProfileComponent } from './Components/user-profile/user-profile.component';
+import { ShowTendersComponent } from './Components/TenderManagement/show-tenders/show-tenders.component';
+import { ShowFavTendersComponent } from './Components/TenderManagement/show-fav-tenders/show-fav-tenders.component';
 
 
 @NgModule({
@@ -30,8 +32,10 @@ import { UserProfileComponent } from './Components/user-profile/user-profile.com
     ShowFavInstitutionsComponent,
     ShowFavInstitutionsComponent,
     ShowUsersComponent,
+    ShowTendersComponent,
+    ShowFavTendersComponent,
     CategoriesListComponent,
-    UserProfileComponent
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,

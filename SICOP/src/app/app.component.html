@@ -19,6 +19,7 @@
                 </button>
                 <ul class="dropdown-menu" style="width: 400px;">
                     <li class="text-center my-1 fw-bold">Notificaciones</li>
+                    <li *ngIf="notificationsList.length === 0" class="text-wrap text-center" style="font-size: x-small;">No tiene ninguna notificación todavia</li>
                     <li><a class="dropdown-item move-cursor bg-light"
                             *ngFor="let item of notificationsList; let i = index;">
                             <p class="text-wrap">{{item.message}}</p>

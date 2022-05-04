@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AccountManagementService {
+export class TenderManagementService {
 
   url:string = 'http://localhost:3000/tenders';
 
@@ -29,7 +29,7 @@ export class AccountManagementService {
       `${this.url}/createFavorite`,
       {
         "user_id":user_id,
-        "tender_id":user_id
+        "tender_id":tender_id
       }
     )
   }
