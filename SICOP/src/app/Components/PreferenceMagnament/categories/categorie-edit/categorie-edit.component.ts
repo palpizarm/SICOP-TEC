@@ -59,7 +59,7 @@ export class CategorieEditComponent implements OnInit {
         this.ngOnInit();
         this.addedWords = []
         this.deletedWords = []
-        this.router.navigateByUrl(localStorage.getItem('roleID') == '3'?'/Categories':'/CategoriesList')
+        this.router.navigateByUrl(localStorage.getItem('roleID') == '3' ? '/Categories' : '/CategoriesList')
       })
   }
 
@@ -105,15 +105,15 @@ export class CategorieEditComponent implements OnInit {
           this.router.navigateByUrl('/Categories')
         })
     } else {
-          // call a service to save
-    this.preferenceService.createCategoryAdmin(this.category.name,this.addedWords)
-    .subscribe((data:any) => {
-        // press close button
-        let element: HTMLElement = document.getElementById('modalClose') as HTMLButtonElement;
-        element.click();
-        // go to categories
-        this.router.navigateByUrl('/CategoriesList')
-    }) 
+      // call a service to save
+      this.preferenceService.createCategoryAdmin(this.category.name, this.addedWords)
+        .subscribe((data: any) => {
+          // press close button
+          let element: HTMLElement = document.getElementById('modalClose') as HTMLButtonElement;
+          element.click();
+          // go to categories
+          this.router.navigateByUrl('/CategoriesList')
+        })
     }
 
   }

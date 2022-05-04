@@ -15,7 +15,6 @@ import { ShowFavInstitutionsComponent } from './Components/show-fav-institutions
 import { AppRoutingModule } from './app-routing.module';
 import { CategoriesListComponent } from './Components/categories-list/categories-list.component';
 import { UserProfileComponent } from './Components/user-profile/user-profile.component';
-import { NotificationComponent } from './Components/notification/notification.component';
 
 
 @NgModule({
@@ -32,8 +31,7 @@ import { NotificationComponent } from './Components/notification/notification.co
     ShowFavInstitutionsComponent,
     ShowUsersComponent,
     CategoriesListComponent,
-    UserProfileComponent,
-    NotificationComponent
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
