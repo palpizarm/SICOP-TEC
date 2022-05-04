@@ -11,11 +11,23 @@
         <div *ngIf="!isLogged" class="text-end">
             <a [routerLink]="['/login']" class="btn btn-outline-light me-2">Iniciar sesión</a>
         </div>
-
         <div *ngIf="isLogged" class="text-end">
-            <button id="notificationBtn" type="button" class="btn btn-outline-light me-2"
-                (click)="showNotification()"><i
-                    class="fas fa-bell fx-3"></i></button>
+            <div class="btn-group">
+                <button type="button" (click)="loadNotification()" class="btn btn-outline-light me-2" data-bs-toggle="dropdown"
+                    aria-expanded="false" data-bs-auto-close="outside">
+                    <i class="fas fa-bell fx-3"></i>
+                </button>
+                <ul class="dropdown-menu" style="width: 400px;">
+                    <li class="text-center my-1 fw-bold">Notificaciones</li>
+                    <li *ngIf="notificationsList.length === 0" class="text-wrap text-center" style="font-size: x-small;">No tiene ninguna notificación todavia</li>
+                    <li><a class="dropdown-item move-cursor bg-light"
+                            *ngFor="let item of notificationsList; let i = index;">
+                            <p class="text-wrap">{{item.message}}</p>
+                            <p class="text-end">{{item.date_created | date: 'dd/MM/yyyy'}}</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <a type="button" [routerLink]="['/userProfile']" class="btn btn-outline-light me-2"><i
                     class="fas fa-user"></i></a>
             <button (click)="logout()" type="button" class="btn btn-outline-light"> Salir <i
@@ -44,7 +56,3 @@
         </div>
     </div>
 </div>
-
-
-<app-notification id="notificationModal">
-</app-notification>

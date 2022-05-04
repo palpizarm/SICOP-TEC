@@ -15,12 +15,8 @@ import { ShowFavInstitutionsComponent } from './Components/show-fav-institutions
 import { AppRoutingModule } from './app-routing.module';
 import { CategoriesListComponent } from './Components/categories-list/categories-list.component';
 import { UserProfileComponent } from './Components/user-profile/user-profile.component';
-<<<<<<< HEAD
-import { NotificationComponent } from './Components/notification/notification.component';
-=======
 import { ShowTendersComponent } from './Components/TenderManagement/show-tenders/show-tenders.component';
 import { ShowFavTendersComponent } from './Components/TenderManagement/show-fav-tenders/show-fav-tenders.component';
->>>>>>> c22b81d6e4a6640c5ff0298cd13938a223cc3e43
 
 
 @NgModule({
@@ -40,7 +36,6 @@ import { ShowFavTendersComponent } from './Components/TenderManagement/show-fav-
     ShowFavTendersComponent,
     CategoriesListComponent,
     UserProfileComponent,
-    NotificationComponent
   ],
   imports: [
     BrowserModule,

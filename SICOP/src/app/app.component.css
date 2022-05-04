@@ -11,3 +11,7 @@ app-notification{
     margin-top: -100px;
     margin-left: -100px;
 }
+
+.move-cursor {
+    cursor: default;
+}
