@@ -9,7 +9,7 @@ export class SidebarOptions {
                 return [
                     { 
                         name: 'Buscar Licitaciones',
-                        route: '/BrowseTenders/byCategory'
+                        route: '/BrowseTenders'
                     },
                     {
                         name: "Licitaciones Favoritas",

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-browser',
@@ -10,25 +11,15 @@ import { ActivatedRoute } from '@angular/router';
 export class BrowserComponent implements OnInit {
 
   title:string='Buscar Licitaciones';
-  categoriesList:[] = [];
+  categoriesList:any[] = [];
   word:string='';
   words:string[]=[]
+  eventsSubject: Subject<any> = new Subject<any>();
 
   constructor(private route: ActivatedRoute) { 
-    this.getType()
   }
 
   ngOnInit(): void {
-  }
-
-  getType(){
-    this.route.params.subscribe(parms => {
-      if (parms['type'] == 'byCategory') {
-        this.title='Buscar Licitaciones';
-      } else if(parms['type'] == 'byWord') {
-        this.title='Buscar Licitaciones por palabras claves';
-      }
-    })
   }
 
   add(form:NgForm){
@@ -40,14 +31,38 @@ export class BrowserComponent implements OnInit {
   }
 
   remove(index) {
-    this.words.splice(index, 1)
+    let item = this.categoriesList.splice(index, 1)
+    this.eventsSubject.next(item[0].category_id)
+  }
+
+  removeWord(index) {
+    let item = this.words.splice(index, 1)
   }
 
   search() {
-
+    // search by categories
+    if (this.title == 'Buscar Licitaciones') {
+      console.log(this.categoriesList)
+    }
+    // search by words 
+    else {
+      console.log(this.words)
+    }
   }
 
   setCategories(categories:any[]) {
+    this.categoriesList = categories
+  }
 
+  searchByWord() {
+    this.title = 'Buscar Licitaciones por palabras claves'
+  }
+
+  searchByCategory() {
+    this.title = 'Buscar Licitaciones'
+  }
+
+  cancelCategorySelection() {
+    this.categoriesList = []
   }
 }

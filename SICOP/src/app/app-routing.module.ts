@@ -13,7 +13,7 @@ import { ShowFavTendersComponent } from './Components/TenderManagement/show-fav-
 import { CategoriesListComponent } from './Components/categories-list/categories-list.component';
 import { UserProfileComponent } from './Components/user-profile/user-profile.component';
 import { HistoryTenderComponent } from './Components/History-tender/history-tender.component';
-import { BrowserComponent } from './Components/browser/browser.component';
+import { BrowserComponent } from './Components/browser/browser.component'; 
 
 
 const routes: Routes = [
@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'CategoriesList', component: CategoriesListComponent, canActivate: [IsLoggedGuard]},
   { path: 'userProfile', component: UserProfileComponent, canActivate: [IsLoggedGuard]},
   { path: 'History', component: HistoryTenderComponent, canActivate: [IsLoggedGuard]},
-  { path: 'BrowseTenders/:type', component: BrowserComponent, canActivate: [IsLoggedGuard]},
+  { path: 'BrowseTenders', component: BrowserComponent, canActivate: [IsLoggedGuard]},
   { path: '**', pathMatch: 'full', redirectTo: 'FavInstitutions'}
 ]
 

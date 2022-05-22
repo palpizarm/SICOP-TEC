@@ -1,14 +1,14 @@
 <div>
-    <h1 class="text-center mt-5">{{title}}</h1>
-    <div *ngIf="title != 'Buscar Licitaciones por palabras claves'" class="container bg-light container-shadow">
-        <div style="min-height: 50vh;">
+    <h1 class="text-center my-5">{{title}}</h1>
+    <div *ngIf="title != 'Buscar Licitaciones por palabras claves'" class="container bg-light container-shadow mb-4">
+        <div style="min-height: 30vh;">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-6 mt-4">
-                <div *ngFor="let item of words; let index = index" class="col mb-md-1">
+                <div *ngFor="let item of categoriesList; let index = index" class="col mb-md-1">
                     <div class="card bg-card">
                         <div class="card-body text-white">
-                            <p class="card-text">{{item.word}}
-                                <button (click)="remove(index)" class=" position-end btn text-white p-0"><i
-                                        class="fas fa-times-circle"></i></button>
+                            <button (click)="remove(index)" class="btn text-white position-end"><i
+                                class="fas fa-times-circle"></i></button>
+                            <p class="card-text w-75">{{item.name}}
                             </p>
                         </div>
                     </div>
@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    <div *ngIf="title == 'Buscar Licitaciones por palabras claves'" class="container bg-light container-shadow">
+    <div *ngIf="title == 'Buscar Licitaciones por palabras claves'" class="container bg-light container-shadow mb-4">
         <div class="row mt-2">
             <form class="d-flex col-12 col-md-6" #form="ngForm" (ngSubmit)="add(form)">
                 <input class="form-control me-2" type="text" placeholder="Escribir palabra" [(ngModel)]="word" required
@@ -24,13 +24,13 @@
                 <button [disabled]="word==''" class="btn btn-primary" type="submit">Agregar</button>
             </form>
         </div>
-        <div style="min-height: 50vh;">
+        <div style="min-height: 30vh;">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-6 mt-4">
                 <div *ngFor="let item of words; let index = index" class="col mb-md-1">
                     <div class="card bg-card">
                         <div class="card-body text-white">
-                            <p class="card-text">{{item.word}}
-                                <button (click)="remove(index)" class=" position-end btn text-white p-0"><i
+                            <p class="card-text">{{item}}
+                                <button (click)="removeWord(index)" class=" position-end btn text-white p-0"><i
                                         class="fas fa-times-circle"></i></button>
                             </p>
                         </div>
@@ -40,31 +40,36 @@
         </div>
     </div>
     <div class="mt-2 text-end">
-        <div class="mb-1">
-            <button *ngIf="title != 'Buscar Licitaciones por palabras claves'" class="btn button-group">Agregar
+        <div class="mb-3">
+            <button *ngIf="title != 'Buscar Licitaciones por palabras claves'" data-bs-toggle="modal"
+                data-bs-target="#showCategories" class="btn button-group">Agregar
                 categoria guardada</button>
             <button class="btn button-group" (click)="search()">Buscar</button>
         </div>
-        <button *ngIf="title != 'Buscar Licitaciones por palabras claves'" class="btn button-group">Buscar por palabras
+        <button *ngIf="title != 'Buscar Licitaciones por palabras claves'" (click)="searchByWord()"
+            class="btn button-group">Buscar por palabras
             claves</button>
+        <button *ngIf="title == 'Buscar Licitaciones por palabras claves'" (click)="searchByCategory()"
+            class="btn button-group">Buscar por categorias</button>
     </div>
 </div>
 
 
 <!-- Modal -->
 <div class="modal fade" id="showCategories" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Categorias</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <app-categories-to-browse (listEvent)="setCategories($event)"></app-categories-to-browse>  
+                <app-categories-to-browse [events]="eventsSubject.asObservable()" (listEvent)="setCategories($event)"></app-categories-to-browse>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar Selección</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    (click)="cancelCategorySelection()">Cerrar</button>
             </div>
         </div>
     </div>
