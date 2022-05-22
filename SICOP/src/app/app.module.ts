@@ -17,6 +17,9 @@ import { CategoriesListComponent } from './Components/categories-list/categories
 import { UserProfileComponent } from './Components/user-profile/user-profile.component';
 import { ShowTendersComponent } from './Components/TenderManagement/show-tenders/show-tenders.component';
 import { ShowFavTendersComponent } from './Components/TenderManagement/show-fav-tenders/show-fav-tenders.component';
+import { HistoryTenderComponent } from './Components/History-tender/history-tender.component';
+import { BrowserComponent } from './Components/browser/browser.component';
+import { CategoriesToBrowseComponent } from './Components/categories-to-browse/categories-to-browse.component';
 
 
 @NgModule({
@@ -36,6 +39,9 @@ import { ShowFavTendersComponent } from './Components/TenderManagement/show-fav-
     ShowFavTendersComponent,
     CategoriesListComponent,
     UserProfileComponent,
+    HistoryTenderComponent,
+    BrowserComponent,
+    CategoriesToBrowseComponent,
   ],
   imports: [
     BrowserModule,
