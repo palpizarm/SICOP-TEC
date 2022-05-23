@@ -20,7 +20,7 @@
                 <ul class="dropdown-menu" style="width: 400px;">
                     <li class="text-center my-1 fw-bold">Notificaciones</li>
                     <li *ngIf="notificationsList.length === 0" class="text-wrap text-center" style="font-size: x-small;">No tiene ninguna notificación todavia</li>
-                    <li><a class="dropdown-item move-cursor bg-light"
+                    <li><a class="dropdown-item move-cursor bg-light border-bottom mb-1"
                             *ngFor="let item of notificationsList; let i = index;">
                             <p class="text-wrap">{{item.message}}</p>
                             <p class="text-end">{{item.date_created | date: 'dd/MM/yyyy'}}</p>
