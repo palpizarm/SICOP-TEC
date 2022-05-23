@@ -18,7 +18,7 @@ export class ExternalServiceService {
 
   searchTender(words:string[]) {
     return this.http.get(
-      `${this.url}/getData/${words}`
+      `${this.url}/getData/${words.length == 0? '[]':words}`
     )
   }
 

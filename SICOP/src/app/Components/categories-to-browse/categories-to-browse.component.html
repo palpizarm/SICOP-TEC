@@ -16,10 +16,10 @@
 <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-6 mt-4">
     <div *ngFor="let item of categories" class="col mb-1">
         <div class="card bg-card" style="max-width: 10rem;">
-            <div class="card-body text-white pointer" (click)="showWords(item.category_id, item.name)">
+            <div class="card-body text-white " >
                 <input class="text-white me-1" (click)="categoryAction( $event, item)" type="checkbox" id="{{ item.category_id }}">
-                <label class="text-white " for="{{ item.category_id }}">Seleccionar</label>
-                <h5 class="card-text">{{item.name}}</h5>
+                <label class="text-white pointer" for="{{ item.category_id }}">Seleccionar</label>
+                <h5 class="card-text pointer" (click)="showWords(item.category_id, item.name)">{{item.name}}</h5>
                 <p class="card-title" style="font-size: small;">{{item.date_created | date: 'dd//MM/yyyy'}}</p>
             </div>
         </div>
