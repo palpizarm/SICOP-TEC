@@ -20,6 +20,7 @@ import { ShowFavTendersComponent } from './Components/TenderManagement/show-fav-
 import { HistoryTenderComponent } from './Components/History-tender/history-tender.component';
 import { BrowserComponent } from './Components/browser/browser.component';
 import { CategoriesToBrowseComponent } from './Components/categories-to-browse/categories-to-browse.component';
+import { TenderListComponent } from './Components/TenderManagement/tender-list/tender-list.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { CategoriesToBrowseComponent } from './Components/categories-to-browse/c
     HistoryTenderComponent,
     BrowserComponent,
     CategoriesToBrowseComponent,
+    TenderListComponent,
   ],
   imports: [
     BrowserModule,

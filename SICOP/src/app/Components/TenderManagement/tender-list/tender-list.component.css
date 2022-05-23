@@ -1,0 +1,72 @@
+.button-group .action-button{
+    background: rgb(24, 41, 201); 
+    color: white;
+}
+
+.button-group .action-button:hover{
+    background: rgb(15, 27, 131);
+    border-color: rgb(15, 27, 131);
+}
+
+div.divTableStyle {
+    border: 1px solid #FFFFFF;
+    width: 90%;
+    height: 50px;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  .divTable.divTableStyle .columnField {
+    border: 1px solid #FFFFFF;
+    padding: 3px 1px;
+    
+  }
+
+  .w-5 {
+    width: 5% !important;
+  }
+
+  .w-15 {
+    width: 15% !important;
+  }
+  .w-35 {
+    width: 35% !important;
+  }
+
+  .my-pagination /deep/.ngx-pagination{
+    margin-top: 10px;
+    padding: 0;
+  }
+
+  .divTable.divTableStyle .divTableBody .divTableCell {
+    font-size: 13px;
+  }
+  .divTable.divTableStyle .divTableRow:nth-child(even) {
+    background: #e0e0e0;
+  }
+  .divTable.divTableStyle .divTableHeading {
+    background: #47494e;
+    border-bottom: 5px solid #FFFFFF;
+  }
+  .divTable.divTableStyle .divTableHeading .divTableHead {
+    font-size: 17px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    border-left: 0px solid #FFFFFF;
+  }
+  .divTable.divTableStyle .divTableHeading .divTableHead:first-child {
+    border-left: none;
+  }
+  
+  .divTableStyle .tableFootStyle {
+    font-size: 14px;
+  }
+  /* DivTable.com */
+  .divTable{ display: table; }
+  .divTableRow { display: table-row; }
+  .divTableHeading { display: table-header-group;}
+  .divTableCell, .divTableHead { display: table-cell;}
+  .divTableHeading { display: table-header-group;}
+  .divTableFoot { display: table-footer-group;}
+  .divTableBody { display: table-row-group;}

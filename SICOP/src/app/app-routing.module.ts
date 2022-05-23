@@ -14,6 +14,7 @@ import { CategoriesListComponent } from './Components/categories-list/categories
 import { UserProfileComponent } from './Components/user-profile/user-profile.component';
 import { HistoryTenderComponent } from './Components/History-tender/history-tender.component';
 import { BrowserComponent } from './Components/browser/browser.component'; 
+import { TenderListComponent } from './Components/TenderManagement/tender-list/tender-list.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'userProfile', component: UserProfileComponent, canActivate: [IsLoggedGuard]},
   { path: 'History', component: HistoryTenderComponent, canActivate: [IsLoggedGuard]},
   { path: 'BrowseTenders', component: BrowserComponent, canActivate: [IsLoggedGuard]},
+  { path: 'TenderList', component: TenderListComponent, canActivate: [IsLoggedGuard]},
   { path: '**', pathMatch: 'full', redirectTo: 'FavInstitutions'}
 ]
 

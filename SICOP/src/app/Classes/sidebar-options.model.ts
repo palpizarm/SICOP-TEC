@@ -53,7 +53,7 @@ export class SidebarOptions {
                     },
                     {
                         name: "Licitaciones",
-                        route:  "/Tender"
+                        route:  "/TenderList"
                     },
                     {
                         name: "Crear usuario de mantenimiento",
