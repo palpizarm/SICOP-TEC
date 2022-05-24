@@ -3,6 +3,7 @@ import { range } from 'rxjs';
 import { TenderManagementService } from 'src/app/Services/tender-management.service';
 import Swal from 'sweetalert2'
 import { element } from 'protractor';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-show-tenders',
@@ -80,41 +81,41 @@ export class ShowTendersComponent implements OnInit {
         this.userID = parseInt(localStorage.getItem('userID'));
         this.loadTenders();
         
-        const showNavbar = (toggleId, navId, bodyId, headerId) =>{
-          const toggle = document.getElementById(toggleId),
-          nav = document.getElementById(navId),
-          bodypd = document.getElementById(bodyId),
-          headerpd = document.getElementById(headerId)
+        // const showNavbar = (toggleId, navId, bodyId, headerId) =>{
+        //   const toggle = document.getElementById(toggleId),
+        //   nav = document.getElementById(navId),
+        //   bodypd = document.getElementById(bodyId),
+        //   headerpd = document.getElementById(headerId)
   
-          // Validate that all variables exist
-          if(toggle && nav && bodypd && headerpd){
-          toggle.addEventListener('click', ()=>{
-          // show navbar
-          nav.classList.toggle('show')
-          // change icon
-          toggle.classList.toggle('bx-x')
-          // add padding to body
-          bodypd.classList.toggle('body-pd')
-          // add padding to header
-          headerpd.classList.toggle('body-pd')
-          })
-          }
-          }
+        //   // Validate that all variables exist
+        //   if(toggle && nav && bodypd && headerpd){
+        //   toggle.addEventListener('click', ()=>{
+        //   // show navbar
+        //   nav.classList.toggle('show')
+        //   // change icon
+        //   toggle.classList.toggle('bx-x')
+        //   // add padding to body
+        //   bodypd.classList.toggle('body-pd')
+        //   // add padding to header
+        //   headerpd.classList.toggle('body-pd')
+        //   })
+        //   }
+        //   }
   
-          showNavbar('header-toggle','nav-bar','body-pd','header')
+        //   showNavbar('header-toggle','nav-bar','body-pd','header')
   
-          /*===== LINK ACTIVE =====*/
-          const linkColor = document.querySelectorAll('.nav_link')
+        //   /*===== LINK ACTIVE =====*/
+        //   const linkColor = document.querySelectorAll('.nav_link')
   
-          function colorLink(){
-          if(linkColor){
-          linkColor.forEach(l=> l.classList.remove('active'))
-          this.classList.add('active')
-          }
-          }
-          linkColor.forEach(l=> l.addEventListener('click', colorLink))
+        //   function colorLink(){
+        //   if(linkColor){
+        //   linkColor.forEach(l=> l.classList.remove('active'))
+        //   this.classList.add('active')
+        //   }
+        //   }
+        //   linkColor.forEach(l=> l.addEventListener('click', colorLink))
   
-               // Your code to run since DOM is loaded and ready
+        //        // Your code to run since DOM is loaded and ready
   
       
     }
@@ -191,13 +192,8 @@ export class ShowTendersComponent implements OnInit {
 
     loadTenders()
     {
-        this._tenderService.getAll().subscribe(
-            (data:any) => {
-                this.tendersList = data.data.rows;
-                this.loadFilTenders();
-                this.loadFavTenders();
-            }
-        )
+        this.tendersList = JSON.parse(localStorage.getItem('tenderList'));
+        this.loadFavTenders();
     }
   
     isFavorite(tender:any)

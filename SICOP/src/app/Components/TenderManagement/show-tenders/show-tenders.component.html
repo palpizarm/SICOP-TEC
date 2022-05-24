@@ -3,63 +3,55 @@
     <div class="container-fluid animated fadeInRight">
         <div class="col">
             <p class="text-center fw-bold fs-4">Licitaciones</p>
-        
+
             <div class="divTable divTableStyle">
                 <div class="divTableHeading">
                     <div class="divTableRow">
-                    <div class="divTableHead Seleccionar">Favoritos</div>
-                    <div class="divTableHead id">ID</div>
-                    <div class="divTableHead Nombre">Nombre</div>
-                    <div class="divTableHead Descripción">Descripción</div>
+                        <div class="divTableHead Seleccionar">Favoritos</div>
+                        <div class="divTableHead id">ID</div>
+                        <div class="divTableHead Descripción">Descripción</div>
                     </div>
                 </div>
-        
+
                 <div class="divTableBody">
-                    <div 
-                    class="divTableRow" 
-                    *ngFor="let tender of tendersList | paginate: { itemsPerPage: 10, currentPage: page }; let i = index" 
-                    >
-                    <div class="divTableCell Seleccionar">
-                        <ng-template [ngIf]="isFavorite(tender)" [ngIfElse]="notFavorite">
-                            <input type="checkbox" id="{{ tender.tender_id }}" checked disabled>
-                        </ng-template>
-                        
-                        <ng-template #notFavorite>
-                            <input type="checkbox" id="{{ tender.tender_id }}">
-                        </ng-template>
-                    </div>
-                    <div class="divTableCell id">{{ tender.tender_id }}</div>
-                    <div class="divTableCell Nombre">{{ tender.name }}</div>
-                    <div class="divTableCell Descripción">{{ tender.description }}</div>
+                    <div class="divTableRow"
+                        *ngFor="let tender of tendersList | paginate: { itemsPerPage: 10, currentPage: page }; let i = index">
+                        <div class="divTableCell Seleccionar">
+                            <ng-template [ngIf]="isFavorite(tender)" [ngIfElse]="notFavorite">
+                                <input type="checkbox" id="{{ tender.tender_id }}" checked disabled>
+                            </ng-template>
+
+                            <ng-template #notFavorite>
+                                <input type="checkbox" id="{{ tender.tender_id }}">
+                            </ng-template>
+                        </div>
+                        <div class="divTableCell id">{{ tender.tender_id }}</div>
+                        <div class="divTableCell Descripción">{{ tender.description }}</div>
                     </div>
                 </div>
             </div>
             <div class="divTableFoot">
 
                 <div class="button-group">
-                    <pagination-controls
-                        class="my-pagination"
-                        (pageChange) = "page = $event"
-                        responsive="true"
-                        previousLabel="Anterior"
-                        nextLabel="Siguiente"
-                    ></pagination-controls>
+                    <pagination-controls class="my-pagination" (pageChange)="page = $event" responsive="true"
+                        previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
 
-                    
-                    <button type="button" class="action-button" (click)="saveFavTender()">Guardar en favoritos</button> 
-                    <button type="button" class="action-button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvas" 
+
+                    <button type="button" class="action-button" (click)="saveFavTender()">Guardar en favoritos</button>
+                    <button type="button" class="action-button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
                         role="button">Filtrar</button>
                 </div>
 
             </div>
         </div>
 
-        <div class="row flex-nowrap">
+        <!-- <div class="row flex-nowrap">
             <div *ngIf="isLogged" class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-sidebar"
                 [ngClass]="{'d-none' : !displaySidebar}">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3" style="min-height:90vh;">
                     <span class="fs-3 d-none d-sm-inline">Menu</span>
-                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                        id="menu">
                         <li *ngFor="let item of options" class="nav-item">
                             <a href={{item.route}} class="nav-link align-middle px-0">
                                 <span class="ms-1 d-none d-sm-inline">{{item.name}}</span>
@@ -68,43 +60,48 @@
                     </ul>
                 </div>
             </div>
-           
-        </div>
+
+        </div> -->
     </div>
 
 </ng-template>
 
-<div class="offcanvas offcanvas-end w-40" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
+<div class="offcanvas offcanvas-end w-40" tabindex="-1" id="offcanvas" data-bs-keyboard="false"
+    data-bs-backdrop="false">
     <div class="offcanvas-header">
         <h6 class="offcanvas-title d-none d-sm-block" id="offcanvas">Filtros</h6>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body px-0">
         <div class="accordion accordion--custom" id="accordionExample">
-          <div class="accordion-item">
-            <div class="accordion-header" id="heading6">
-              <input type="checkbox" class="form-check-input program_checkbox" id="program6" value="6" checked>
-              <a class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="true" aria-controls="collapse6">Instituciones</a>
+            <div class="accordion-item">
+                <div class="accordion-header" id="heading6">
+                    <input type="checkbox" class="form-check-input program_checkbox" id="program6" value="6">
+                    <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6"
+                        aria-expanded="false" aria-controls="collapse6">Instituciones</a>
+                </div>
             </div>
-          </div>
-          <div id="collapse6" style="margin-left:24px;" class="accordion-collapse collapse show ml-4" aria-labelledby="heading6" data-bs-parent="#accordionExample">
-            <div class="form-group form-check pl-4">
-              <input type="checkbox" class="form-check-input file_checkbox program6" id="package243" value="program_data/6/packages/1646756076.zip" checked="">
-              <label class="form-check-label" for="package243">1646756076.zip</label>
+            <div id="collapse6" style="margin-left:24px;" class="accordion-collapse collapse ml-4"
+                aria-labelledby="heading6" data-bs-parent="#accordionExample">
+                <!-- <div class="form-group form-check pl-4">
+                </div> -->
+                <p>hola mundo</p>
+
             </div>
-            <div class="form-group form-check pl-4">
-              <input type="checkbox" class="form-check-input file_checkbox program6" id="scriptundefined" value="program_data/6/scripts/MEER_munger.py" checked="">
-              <label class="form-check-label" for="scriptundefined">MEER_munger.py</label>
+            <div class="accordion-item">
+                <div class="accordion-header" id="heading9">
+                    <input type="checkbox" class="form-check-input program_checkbox" id="program9" value="9">
+                    <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9"
+                        aria-expanded="false" aria-controls="collapse9">Region</a>
+                </div>
             </div>
-          </div>
-          <div class="accordion-item">
-            <div class="accordion-header" id="heading9">
-              <input type="checkbox" class="form-check-input program_checkbox" id="program9" value="9">
-              <a class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="true" aria-controls="collapse9">Vermont State Lands Continuous Forest Inventory</a>
+            <div id="collapse9" style="margin-left:24px;" class="accordion-collapse collapse ml-4"
+                aria-labelledby="heading9" data-bs-parent="#accordionExample">
+                <!-- <div class="form-group form-check pl-4">
+                </div> -->
+                <p>hola jajaja</p>
+
             </div>
-          </div>
-          <div id="collapse9" style="margin-left:24px;" class="accordion-collapse collapse show ml-4" aria-labelledby="heading9" data-bs-parent="#accordionExample">No files for this project
-          </div>
         </div>
     </div>
 </div>
