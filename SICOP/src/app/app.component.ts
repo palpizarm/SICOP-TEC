@@ -6,50 +6,62 @@ import { AccountManagementService } from './Services/account-management.service'
 import { NotificationService } from './Services/notification.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'SICOP';
+    title = 'SICOP';
 
-  options: Options[] = []
+    options: Options[] = []
 
-  displaySidebar: boolean = true;
-  isLogged: boolean = false;
-  notificationsList:any[] = [];
+    displaySidebar: boolean = true;
+    isLogged: boolean = false;
+    notificationsList: any[] = [];
 
-  constructor(private accountService : AccountManagementService, private router: Router, private notificationService:NotificationService) {}
+    constructor(private accountService: AccountManagementService, private router: Router, private notificationService: NotificationService) { }
 
-  ngOnInit(): void {
-    this.accountService.isLoggedEmitter
-      .subscribe((isLogged : boolean) => {
-        this.isLogged = isLogged
-        this.options = SidebarOptions.getOptions(localStorage.getItem('roleID'))
-        if (!this.isLogged) {
-          localStorage.removeItem('userID')
-          localStorage.removeItem('roleID')
-        }
-      })
-  }
-
-  loadNotification() {
-    if(this.isLogged) {
-      this.notificationService.getNotification(parseInt(localStorage.getItem('userID')))
-        .subscribe((data:any) => {
-          if (data.code > 0) {
-            this.notificationsList = data.data.rows
-            console.log(this.notificationsList)
-          }
-        })
+    ngOnInit(): void {
+        this.accountService.isLoggedEmitter
+            .subscribe((isLogged: boolean) => {
+                this.isLogged = isLogged
+                this.options = SidebarOptions.getOptions(localStorage.getItem('roleID'))
+                if (!this.isLogged) {
+                    localStorage.removeItem('userID')
+                    localStorage.removeItem('roleID')
+                }
+            })
     }
-  }
 
-  logout() {
-    localStorage.removeItem('userID')
-    localStorage.removeItem('roleID')
-    this.accountService.isLoggedEmit(false)
-    this.router.navigateByUrl('')
-  }
-  
+    loadNotification() {
+        if (this.isLogged) {
+            this.notificationService.getNotification(parseInt(localStorage.getItem('userID')))
+                .subscribe((data: any) => {
+                    if (data.code > 0) {
+                        this.notificationsList = data.data.rows
+                        console.log(this.notificationsList)
+                    }
+                })
+        }
+    }
+
+    logout() {
+        localStorage.removeItem('userID')
+        localStorage.removeItem('roleID')
+        this.accountService.isLoggedEmit(false)
+        this.router.navigateByUrl('')
+    }
+
+    redirect(){
+        let roleID = parseInt(localStorage.getItem('roleID'));
+
+        if (roleID == 3) {
+            this.router.navigateByUrl('/BrowseTenders')
+        } else if (roleID == 1) {
+            this.router.navigateByUrl('/Users')
+        } else {
+            this.router.navigateByUrl('/CategoriesList')
+        }
+     }
+
 }
