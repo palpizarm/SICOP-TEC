@@ -13,6 +13,12 @@ export class FavoriteInstitutionsManagementService {
   constructor(private http: HttpClient) { }
 
 
+  getAllInstitutions = () => {
+    return this.http.get(
+      `${this.url}/`
+    )
+  }
+
   getFavorites = (user_id: number) => {
     return this.http.get(
       `${this.url}/getFavorites/${user_id}`

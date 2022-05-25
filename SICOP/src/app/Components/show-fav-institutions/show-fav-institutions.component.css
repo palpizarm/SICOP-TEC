@@ -1,5 +1,5 @@
 .button-group .action-button{
-    background: rgb(24, 41, 201); 
+    background: rgb(52, 65, 182); 
     color: white;
     border: 0 none;
     border-radius: 5px;
@@ -7,7 +7,6 @@
     min-width: 130px;
     margin: 0 3px;
     padding: 5px 5px;
-    text-transform: uppercase; 
     display: inline-block;
 }
 
