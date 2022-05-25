@@ -44,24 +44,6 @@
 
             </div>
         </div>
-
-        <!-- <div class="row flex-nowrap">
-            <div *ngIf="isLogged" class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-sidebar"
-                [ngClass]="{'d-none' : !displaySidebar}">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3" style="min-height:90vh;">
-                    <span class="fs-3 d-none d-sm-inline">Menu</span>
-                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-                        id="menu">
-                        <li *ngFor="let item of options" class="nav-item">
-                            <a href={{item.route}} class="nav-link align-middle px-0">
-                                <span class="ms-1 d-none d-sm-inline">{{item.name}}</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div> -->
     </div>
 
 </ng-template>
@@ -73,35 +55,154 @@
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body px-0">
-        <div class="accordion accordion--custom" id="accordionExample">
+        <div class="accordion accordion--custom" id="accordion">
+
+            <!-- Item -->
             <div class="accordion-item">
-                <div class="accordion-header" id="heading6">
-                    <input type="checkbox" class="form-check-input program_checkbox" id="program6" value="6">
-                    <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6"
-                        aria-expanded="false" aria-controls="collapse6">Instituciones</a>
+                <div class="accordion-header" id="FechaPublicacion">
+                    <input type="checkbox" class="form-check-input program_checkbox" id="dateCheckbox"
+                        [(ngModel)]="byDate">
+
+                    <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#FechaCollapse" aria-expanded="false" aria-controls="FechaCollapse">Fecha de
+                        Publicacion</a>
                 </div>
             </div>
-            <div id="collapse6" style="margin-left:24px;" class="accordion-collapse collapse ml-4"
-                aria-labelledby="heading6" data-bs-parent="#accordionExample">
-                <!-- <div class="form-group form-check pl-4">
-                </div> -->
-                <p>hola mundo</p>
+
+            <div id="FechaCollapse" style="margin-left:24px;" class="accordion-collapse collapse ml-4"
+                aria-labelledby="FechaPublicacion" data-bs-parent="#accordion">
+                <div class="row">
+                    <div class="col">
+                        <p>Desde</p>
+                        <input type="date" id="start-date" name="start-date" [(ngModel)]="minDate">
+                    </div>
+                    <div class="col">
+                        <p>Hasta</p>
+                        <input type="date" id="end-date" name="end-date" [(ngModel)]="maxDate">
+                    </div>
+                </div>
 
             </div>
+            <!-- Termina Item  -->
+
+            <!-- Item -->
             <div class="accordion-item">
-                <div class="accordion-header" id="heading9">
-                    <input type="checkbox" class="form-check-input program_checkbox" id="program9" value="9">
-                    <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9"
-                        aria-expanded="false" aria-controls="collapse9">Region</a>
+                <div class="accordion-header" id="Presupuesto">
+                    <input type="checkbox" class="form-check-input program_checkbox" id="budgetCheckbox"
+                        [(ngModel)]="byBudget">
+
+                    <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#budgetCollapse" aria-expanded="false"
+                        aria-controls="budgetCollapse">Presupuesto</a>
                 </div>
             </div>
-            <div id="collapse9" style="margin-left:24px;" class="accordion-collapse collapse ml-4"
-                aria-labelledby="heading9" data-bs-parent="#accordionExample">
-                <!-- <div class="form-group form-check pl-4">
-                </div> -->
-                <p>hola jajaja</p>
+
+            <div id="budgetCollapse" style="margin-left:24px;" class="accordion-collapse collapse ml-4"
+                aria-labelledby="Presupuesto" data-bs-parent="#accordion">
+
+                <div class="row">
+                    <div class="col">
+                        <p>Desde</p>
+                        <input type="number" id="start-budget" name="start-budget" min="{{minBudget}}"
+                            max="{{maxBudget}}" [(ngModel)]="minBudget">
+
+                    </div>
+                    <div class="col">
+                        <p>Hasta</p>
+                        <input type="number" id="end-budget" name="end-budget" min="{{minBudget}}" max="{{maxBudget}}"
+                            [(ngModel)]="maxBudget">
+
+                    </div>
+                </div>
 
             </div>
+            <!-- Termina Item  -->
+
+            <!-- Item -->
+            <div class="accordion-item">
+                <div class="accordion-header" id="TipoProcedimiento">
+                    <input type="checkbox" class="form-check-input program_checkbox" id="processTypeCheckbox"
+                        [(ngModel)]="byProcess">
+
+                    <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#processTypeCollapse" aria-expanded="false"
+                        aria-controls="processTypeCollapse">Tipo de Procedimiento</a>
+                </div>
+            </div>
+
+            <div id="processTypeCollapse" style="margin-left:24px;" class="accordion-collapse collapse ml-4"
+                aria-labelledby="TipoProcedimiento" data-bs-parent="#accordion">
+                <div class="select">
+                    <select [(ngModel)]="process">
+                        <option selected>-- Seleccione el tipo de procedimiento --</option>
+                        <ng-template ngFor let-process [ngForOf]="process_types" let-i="index">
+                            <option>{{ process }}</option>
+                        </ng-template>
+                    </select>
+                    <div class="select_arrow">
+                    </div>
+                </div>
+
+            </div>
+            <!-- Termina Item  -->
+
+            <!-- Item -->
+            <div class="accordion-item">
+                <div class="accordion-header" id="Instituciones">
+                    <input type="checkbox" class="form-check-input program_checkbox" id="dateCheckbox"
+                        [(ngModel)]="byInstitution">
+
+                    <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#InstCollapse" aria-expanded="false" aria-controls="InstCollapse">
+                        Instituciones</a>
+                </div>
+            </div>
+
+            <div id="InstCollapse" style="margin-left:24px;" class="accordion-collapse collapse ml-4"
+                aria-labelledby="Instituciones" data-bs-parent="#accordion">
+                <div class="select">
+                    <select [(ngModel)]="institution">
+                        <option selected>-- Seleccione una institución --</option>
+                        <ng-template ngFor let-institution [ngForOf]="institutions" let-i="index" let-f="first">
+                            <option>{{ institution.name }}</option>
+                        </ng-template>
+                    </select>
+                    <div class="select_arrow">
+                    </div>
+                </div>
+            </div>
+            <!-- Termina Item  -->
+
+
+            <!-- Item -->
+            <div class="accordion-item">
+                <div class="accordion-header" id="Region">
+                    <input type="checkbox" class="form-check-input program_checkbox" id="regionCheckbox"
+                        [(ngModel)]="byRegion">
+
+                    <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#regionCollapse" aria-expanded="false" aria-controls="regionCollapse">Region</a>
+                </div>
+            </div>
+
+            <div id="regionCollapse" style="margin-left:24px;" class="accordion-collapse collapse ml-4"
+                aria-labelledby="Region" data-bs-parent="#accordion">
+
+                <div class="select">
+                    <select [(ngModel)]="region">
+                        <option>-- Seleccione una region --</option>
+                        <ng-template ngFor let-regionSelected [ngForOf]="regions" let-i="index">
+                            <option>{{ regionSelected }}</option>
+                        </ng-template>
+                    </select>
+                    <div class="select_arrow">
+                    </div>
+                </div>
+
+            </div>
+            <!-- Termina Item  -->
+
+            <button class="applyFilters-button" (click)="loadFilTenders()">Aplicar filtros</button>
         </div>
     </div>
 </div>
