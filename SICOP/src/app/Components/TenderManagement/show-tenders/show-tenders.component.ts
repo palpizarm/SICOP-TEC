@@ -21,6 +21,8 @@ export class ShowTendersComponent implements OnInit {
 
     favTendersList: any = [];
     filTendersList: any = [];
+
+    selectedItem:any = {}
     cargado: boolean = false;
 
     //Doing
@@ -164,6 +166,7 @@ export class ShowTendersComponent implements OnInit {
 
     loadTenders() {
         this.tendersList = JSON.parse(localStorage.getItem('tenderList'));
+        this.filTendersList = this.tendersList;
         this.loadFavTenders();
     }
 
