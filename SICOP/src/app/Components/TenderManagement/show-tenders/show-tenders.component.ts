@@ -20,56 +20,28 @@ export class ShowTendersComponent implements OnInit {
   
     favTendersList:any = [];
     filTendersList: any = [];
-    tenders: any = 
-    [
-      {
-      'Número de procedimiento':1, 'Fecha/hora de publicación':'2022-04-30',
-      'Nombre de la institución': 'MOPT', 'Descripción del procedimiento':'CONTRATACIÓN DIRECTA',
-      'Fecha/hora de apertura de ofertas': '2022-06-30', 'Presupuesto total estimado': 956000,
-      'Estado del concurso': 'En recepcion de ofertas', 'Regiones': ['San Jose','Heredia','Alajuela']
-      },
-      {
-        'Número de procedimiento':2, 'Fecha/hora de publicación':'2022-05-10',
-        'Nombre de la institución': 'MOPT', 'Descripción del procedimiento':'CONTRATACIÓN DIRECTA',
-        'Fecha/hora de apertura de ofertas': '2022-07-30', 'Presupuesto total estimado': 10000000,
-        'Estado del concurso': 'En recepcion de ofertas', 'Regiones': ['San Jose','Heredia']
-        },
-        {
-          'Número de procedimiento':3, 'Fecha/hora de publicación':'2022-06-15',
-          'Nombre de la institución': 'MOPT', 'Descripción del procedimiento':'CONTRATACIÓN INDIRECTA',
-          'Fecha/hora de apertura de ofertas': '2022-07-30', 'Presupuesto total estimado': 467000,
-          'Estado del concurso': 'En recepcion de ofertas', 'Regiones': ['San Jose','Heredia','Alajuela']
-          },
-          {
-            'Número de procedimiento':4, 'Fecha/hora de publicación':'2022-06-18',
-            'Nombre de la institución': 'MEP', 'Descripción del procedimiento':'CONTRATACIÓN DIRECTA',
-            'Fecha/hora de apertura de ofertas': '2022-07-30', 'Presupuesto total estimado': 500000,
-            'Estado del concurso': 'En recepcion de ofertas', 'Regiones': ['San Jose','Heredia']
-            }
-    ]
-
     cargado:boolean = false;
 
     //Doing
     byBudget:boolean = true;
     minBudget:number = 0;
-    maxBudget:number = 10000000;
+    maxBudget:number = 300000000;
     
     //Doing
-    byProcess:boolean = false;
-    process:string= 'CONTRATACIÓN INDIRECTA';
-
+    byProcess:boolean = true;
+    process:string= 'LICITACIÓN ABREVIADA';
+    procedures_type= ['LICITACIÓN ABREVIADA']
     //Doing
     byRegion:boolean = false;
     regions:any =['Alajuela'];
 
     //Doing
-    byDate:boolean = false;
-    minDate:string ='2022-04-30';
-    maxDate:string='2022-05-30';
+    byDate:boolean = true;
+    minDate:string ='2022-05-12T00:00:00.000Z';
+    maxDate:string='2022-06-15T00:00:00.000Z';
 
     //Doing
-    byInstitution: boolean = true;
+    byInstitution: boolean = false;
     institutions:any=[];
 
   
@@ -80,6 +52,9 @@ export class ShowTendersComponent implements OnInit {
     ngOnInit(): void {
         this.userID = parseInt(localStorage.getItem('userID'));
         this.loadTenders();
+        this.loadFilTenders();
+        console.log(this.budgetValue('29.742.400 [CRC]'))
+        
         
         // const showNavbar = (toggleId, navId, bodyId, headerId) =>{
         //   const toggle = document.getElementById(toggleId),
@@ -129,44 +104,48 @@ export class ShowTendersComponent implements OnInit {
             }
         )
     }
+    budgetValue = (value:string)=>{
+      let amount = value.split('[')[0];
+      return parseInt(amount.replace(/\./g,''));
+    }
 
     loadFilTenders(){
       if(this.byBudget){
-        this.filTendersList = this.tenders.filter(i => (i["Presupuesto total estimado"] >= this.minBudget && i["Presupuesto total estimado"] <= this.maxBudget));      
+        this.filTendersList = this.tendersList.filter(i => (this.budgetValue(i["budget"]) >= this.minBudget && this.budgetValue(i["budget"]) <= this.maxBudget));      
       }
       if(this.byInstitution){
         if(this.byBudget){
-          this.filTendersList = this.filTendersList.filter(i => this.institutions.includes(i["Nombre de la institución"] )) 
-        //  this.filTendersList = this.filTendersList.filter(i => (i["Nombre de la institución"] === this.institution));      
+          this.filTendersList = this.filTendersList.filter(i => this.institutions.includes(i["institution_name"] ))     
         }
         else{
-          this.filTendersList = this.tenders.filter(i => this.institutions.includes(i["Nombre de la institución"] )) 
+          this.filTendersList = this.tendersList.filter(i => this.institutions.includes(i["institution_name"] )) 
  
         }
       }
       if(this.byProcess){
         if(this.byBudget || this.byInstitution){
           
-          this.filTendersList = this.filTendersList.filter(i => (i["Descripción del procedimiento"] === this.process))          
+          this.filTendersList = this.filTendersList.filter(i => (i["procedure_type"] === this.process))          
         }
         else{
-          this.filTendersList = this.tenders.filter(i => (i["Descripción del procedimiento"] === this.process))          
+          this.filTendersList = this.tendersList.filter(i => (i["procedure_type"] === this.process))          
         }
       }
       if(this.byRegion){
         if(this.byBudget || this.byInstitution || this.byProcess){
-          this.filTendersList = this.filTendersList.filter(i => (i["Regiones"].some(t => this.regions.includes(t)))) 
+          this.filTendersList = this.filTendersList.filter(i => (i["regions"].some(t => this.regions.includes(t)))) 
         }
         else{
-          this.filTendersList = this.tenders.filter(i => (i["Regiones"].some(t => this.regions.includes(t)))) 
+          console.log('Entra')
+          this.filTendersList = this.tendersList.filter(i => (i["regions"].some(t => this.regions.includes(t)))) 
         }
       }
       if(this.byDate){      
         if(this.byBudget || this.byInstitution || this.byProcess || this.byRegion){
-          this.filTendersList = this.filTendersList.filter(i => (i["Fecha/hora de publicación"] >= this.minDate && i["Fecha/hora de publicación"] <= this.maxDate))           
+          this.filTendersList = this.filTendersList.filter(i => (i["publication_date"] >= this.minDate && i["publication_date"] <= this.maxDate))           
         }
         else{
-          this.filTendersList = this.tenders.filter(i => (i["Fecha/hora de publicación"] >= this.minDate && i["Fecha/hora de publicación"] <= this.maxDate))  
+          this.filTendersList = this.tendersList.filter(i => (i["publication_date"] >= this.minDate && i["publication_date"] <= this.maxDate))  
         }
       }
 
@@ -194,6 +173,7 @@ export class ShowTendersComponent implements OnInit {
     {
         this.tendersList = JSON.parse(localStorage.getItem('tenderList'));
         this.loadFavTenders();
+        console.log(this.tendersList)
     }
   
     isFavorite(tender:any)
