@@ -23,7 +23,7 @@
 
             <div class="divTableBody">
                 <div class="divTableRow"
-                    *ngFor="let item of tenderListHisotry | paginate: { itemsPerPage: 10, currentPage: page }; let i = index">
+                    *ngFor="let item of tenderListHistory | paginate: { itemsPerPage: 10, currentPage: page }; let i = index">
                     <div class="divTableCell columnField w-15">
                         <input type="checkbox" id="{{ item.tender_history_id }}">
                     </div>

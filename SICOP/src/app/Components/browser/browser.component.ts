@@ -63,7 +63,7 @@ export class BrowserComponent implements OnInit {
         }
         // search by words 
         Swal.fire(
-            'Bucando...',
+            'Buscando...',
             'Por favor, mientras el sistema realiza la busqueda'
         )
         Swal.showLoading()
