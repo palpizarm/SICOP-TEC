@@ -58,7 +58,7 @@ export class FavoriteInstitutionsManagementService {
 
   getInstitutions = (institutionsList: any[]) => {
     return this.http.get(
-      `${this.url}`,
+      `${this.url}/`,
     ).pipe(map(resp => {
       var institutions: [] = resp['data']
       institutions = institutions['rows']

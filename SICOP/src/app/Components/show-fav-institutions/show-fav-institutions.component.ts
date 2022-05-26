@@ -34,6 +34,7 @@ export class ShowFavInstitutionsComponent implements OnInit {
         this._favInstitutionsService.getFavorites(this.userID).subscribe(
             (data: any) => {
                 this.favInstitutionsList = data.data.rows
+                console.log(this.favInstitutionsList);
             }
         )
 
@@ -42,7 +43,8 @@ export class ShowFavInstitutionsComponent implements OnInit {
     loadInstitutions() {
         this._favInstitutionsService.getInstitutions(this.favInstitutionsList).subscribe(
             (data: any) => {
-                this.institutionsList = data
+                this.institutionsList = data.data.rows
+                //console.log(this.institutionsList)
             }
         )
     }
