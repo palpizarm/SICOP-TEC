@@ -26,11 +26,11 @@
                                 <input type="checkbox" id="{{ tender.tender_id }}">
                             </ng-template>
                         </div>
-                        <div class="divTableCell id">{{ tender.tender_id }}</div>
+                        <div class="divTableCell id">{{ tender.id }}</div>
                         <div class="divTableCell Descripción">{{ tender.description }}</div>
                         <div class="divTableCell columnField w-15">
                             <button class="btn" data-bs-toggle="modal" data-bs-target="#showTender"
-                            (click)="selectedItem = tender"><i class="fas fa-eye"></i></button>
+                            (click)="save_history(tender)"><i class="fas fa-eye"></i></button>
                         </div>
                     </div>
                 </div>
@@ -215,10 +215,10 @@
 
 <!-- Modal -->
 <div class="modal fade" id="showTender" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Informacion de la licitación</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">Información de la licitación</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

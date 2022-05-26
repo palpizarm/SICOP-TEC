@@ -130,6 +130,10 @@ export class UserProfileComponent implements OnInit {
                   showConfirmButton: false,
                   timer: 1000
                 }).then((result) => {
+                    localStorage.removeItem('userID')
+                    localStorage.removeItem('roleID')
+                    this.accountService.isLoggedEmit(false);
+                    this.router.navigateByUrl('')
                   this.router.navigateByUrl('/')
                 })
               }

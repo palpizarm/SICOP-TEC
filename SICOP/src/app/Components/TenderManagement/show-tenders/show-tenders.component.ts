@@ -70,6 +70,17 @@ export class ShowTendersComponent implements OnInit {
         this.loadInstitutions();
     }
 
+    save_history(tender:any)
+    {
+        this.selectedItem = tender;
+        this._tenderService.insertHistory(tender.tender_id,this.userID).subscribe(
+            (data: any) => {
+                console.log(data);
+            }
+        )
+
+    }
+
     getDate() {
 
         var date = new Date();

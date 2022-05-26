@@ -14,7 +14,7 @@ export class HistoryTenderComponent implements OnInit {
 
   userID:number = 0;
 
-  tenderListHisotry:any = [];
+  tenderListHistory:any = [];
 
   constructor(private tenderService: TenderManagementService) { 
     this.fetchHistory()
@@ -27,7 +27,8 @@ export class HistoryTenderComponent implements OnInit {
     this.tenderService.getHistory(Number(localStorage.getItem('userID')))
       .subscribe((data:any) => {
         if (data.code > 0) {
-          this.tenderListHisotry =  data.data.rows
+          this.tenderListHistory =  data.data.rows
+          console.log()
         } else {
           console.error('Error in db connection!')
         }

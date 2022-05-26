@@ -16,6 +16,8 @@ export class ShowFavTendersComponent implements OnInit {
     favTendersList:any = [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}];
   
     cargado:boolean = false;
+
+    selectedItem:any = {}
   
     constructor(
         private _tenderService : TenderManagementService
@@ -31,6 +33,7 @@ export class ShowFavTendersComponent implements OnInit {
         this._tenderService.getFavorites(this.userID).subscribe(
             (data:any) => {
                 this.favTendersList = data.data.rows;
+                console.log(this.favTendersList);
                 this.cargado = true;
             }
         )
