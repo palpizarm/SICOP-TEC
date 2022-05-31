@@ -1,22 +1,11 @@
 .button-group .action-button{
-    background: rgb(52, 65, 182); 
+    background: rgb(24, 41, 201); 
     color: white;
-    border: 0 none;
-    border-radius: 5px;
-    cursor: pointer; 
-    min-width: 130px;
-    margin: 0 3px;
-    padding: 5px 5px;
-    display: inline-block;
 }
 
 .button-group .action-button:hover{
     background: rgb(15, 27, 131);
     border-color: rgb(15, 27, 131);
-}
-
-.custum-select{
-    
 }
 
 div.divTableStyle {
@@ -27,35 +16,21 @@ div.divTableStyle {
     border-collapse: collapse;
     margin-top: 20px;
   }
-  .divTable.divTableStyle .Seleccionar {
+  .divTable.divTableStyle .columnField {
     border: 1px solid #FFFFFF;
     padding: 3px 1px;
-    width: 10%;
-  }
-  .divTable.divTableStyle .cedJuridica {
-    border: 1px solid #FFFFFF;
-    padding: 3px 1px;
-    width: 20%;
-  }
-  .divTable.divTableStyle .Abreviatura {
-    border: 1px solid #FFFFFF;
-    padding: 3px 1px;
-    width: 15%;
-  }
-  .divTable.divTableStyle .Nombre {
-    border: 1px solid #FFFFFF;
-    padding: 3px 1px;
-    width: 45%;
-  }
-  .divTable.divTableStyle .Editar {
-    border: 1px solid #FFFFFF;
-    padding: 3px 1px;
-    width: 10%;
+    
   }
 
-  .divTable.divTableStyle .Editar button {
-    background: none;
-    border: none;
+  .w-5 {
+    width: 5% !important;
+  }
+
+  .w-15 {
+    width: 15% !important;
+  }
+  .w-35 {
+    width: 35% !important;
   }
 
   .my-pagination /deep/.ngx-pagination{

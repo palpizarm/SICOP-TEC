@@ -1,7 +1,7 @@
 .button-group{
     margin-top: 20px;
     position: fixed;
-    bottom: 25%;
+    bottom: 10%;
     right: 10%;
 }
 
@@ -44,7 +44,7 @@ div.divTableStyle {
   }
   .divTable.divTableStyle .id {
     border: 1px solid #FFFFFF;
-    width: 10%;
+    width: 20%;
   }
 
   .divTable.divTableStyle .Nombre {

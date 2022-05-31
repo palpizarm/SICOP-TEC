@@ -9,7 +9,7 @@ export class SidebarOptions {
                 return [
                     { 
                         name: 'Buscar Licitaciones',
-                        route: '/Tenders'
+                        route: '/BrowseTenders'
                     },
                     {
                         name: "Licitaciones Favoritas",
@@ -32,13 +32,14 @@ export class SidebarOptions {
             case '2': {
                 return [
                     {
-                        name: "Lista de categorias",
-                        route:  '/CategoriesList'
+                        name: "Licitaciones",
+                        route:  "/TenderList"
                     },
                     {
-                        name: "Licitaciones",
-                        route:  "/Tenders"
+                        name: "Lista de categorias",
+                        route:  '/CategoriesList'
                     }
+                   
                 ]
             }
             case '1': {
@@ -53,7 +54,7 @@ export class SidebarOptions {
                     },
                     {
                         name: "Licitaciones",
-                        route:  "/Tender"
+                        route:  "/TenderList"
                     },
                     {
                         name: "Crear usuario de mantenimiento",

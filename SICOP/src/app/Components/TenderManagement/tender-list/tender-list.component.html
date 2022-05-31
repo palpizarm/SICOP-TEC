@@ -1,0 +1,86 @@
+<div>
+    <h1 class="text-center mt-5 fs-3 fw-bold">Licitaciones</h1>
+
+    <div class="container bg-light">
+        <div class="button-group row mt-2">
+           <div class="col-11 text-end">
+               
+            <button type="button" class="btn action-button mt-2" (click)="update()">Actualizar Licitaciones</button> 
+             <a href="https://www.sicop.go.cr/index.jsp" target="_blank"  class="btn mt-2 me-5 ms-1 action-button">Página del SICOP</a>
+           </div>
+        </div>
+
+        <div class="divTable divTableStyle">
+            <div class="divTableHeading">
+                <div class="divTableRow">
+                    <div class="divTableHead columnField w-15">ID</div>
+                    <div class="divTableHead columnField w-35">Descripcion</div>
+                    <div class="divTableHead columnField w-15">Fecha de publicación</div>
+                    <div class="divTableHead columnField w-5">Acción</div>
+                </div>
+            </div>
+
+            <div class="divTableBody">
+                <div class="divTableRow"
+                    *ngFor="let item of tenderList | paginate: { itemsPerPage: 15, currentPage: page }; let i = index">
+                    <div class="divTableCell columnField w-5">{{ item.id }}</div>
+                    <div class="divTableCell columnField w-35">{{ item.description }}</div>
+                    <div class="divTableCell columnField w-15">{{ item.publication_date | date:'dd/MM/yyyy' }}</div>
+                    <div class="divTableCell columnField w-15">
+                        <button class="btn" data-bs-toggle="modal" data-bs-target="#showTender"
+                        (click)="selectedItem = item"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <pagination-controls class="my-pagination" (pageChange)="page = $event" responsive="true"
+            previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="showTender" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Informacion de la licitación</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="fw-bold col-6">Número de procedimiento</div>
+                <div class="col-6">{{selectedItem.id}}</div>
+            </div>
+            <div class="row">
+                <div class="fw-bold col-6">Descripción</div>
+                <div class="col-6">{{selectedItem.description}}</div>
+            </div>
+            <div class="row">
+                <div class="fw-bold col-6">Institución</div>
+                <div class="col-6">{{selectedItem.institution_name}}</div>
+            </div>
+            <div class="row">
+                <div class="fw-bold col-6">Fecha de publicación</div>
+                <div class="col-6">{{selectedItem.publication_date | date:'dd/MM/yyyy'}}</div>
+            </div>
+            <div class="row">
+                <div class="fw-bold col-6">Fecha de inicio de recepción de ofertas</div>
+                <div class="col-6">{{selectedItem.opening_date | date:'dd/MM/yyyy'}}</div>
+            </div>
+            <div class="row">
+                <div class="fw-bold col-6">Fecha de cierre de ofertas</div>
+                <div class="col-6">{{selectedItem.close_date | date:'dd/MM/yyyy'}}</div>
+            </div>
+            <div class="row">
+                <div class="fw-bold col-6">Regiones</div>
+                <div class="col-6"><span class="bg-success text-dark bg-opacity-25 me-1" *ngFor="let region of selectedItem.regions"> {{region}} </span></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -13,6 +13,12 @@ export class FavoriteInstitutionsManagementService {
   constructor(private http: HttpClient) { }
 
 
+  getAllInstitutions = () => {
+    return this.http.get(
+      `${this.url}/`
+    )
+  }
+
   getFavorites = (user_id: number) => {
     return this.http.get(
       `${this.url}/getFavorites/${user_id}`
@@ -52,7 +58,7 @@ export class FavoriteInstitutionsManagementService {
 
   getInstitutions = (institutionsList: any[]) => {
     return this.http.get(
-      `${this.url}`,
+      `${this.url}/`,
     ).pipe(map(resp => {
       var institutions: [] = resp['data']
       institutions = institutions['rows']

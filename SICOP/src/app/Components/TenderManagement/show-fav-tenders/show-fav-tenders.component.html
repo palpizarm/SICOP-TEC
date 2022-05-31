@@ -2,81 +2,89 @@
 
     <div class="container">
         <p class="text-center fw-bold fs-4">Licitaciones favoritas</p>
-    
+
         <div class="divTable divTableStyle">
-        <div class="divTableHeading">
-            <div class="divTableRow">
-            <div class="divTableHead Seleccionar">Seleccionar</div>
-            <div class="divTableHead id">ID</div>
-            <div class="divTableHead Nombre">Nombre</div>
-            <div class="divTableHead Descripción">Descripción</div>
+            <div class="divTableHeading">
+                <div class="divTableRow">
+                    <div class="divTableHead Seleccionar">Seleccionar</div>
+                    <div class="divTableHead id">ID</div>
+                    <div class="divTableHead Descripción">Descripción</div>
+                    <div class="divTableHead columnField w-5">Acción</div>
+                </div>
             </div>
-        </div>
-    
-        <div class="divTableBody">
-            <div 
-            class="divTableRow" 
-            *ngFor="let tender of favTendersList | paginate: { itemsPerPage: 10, currentPage: page }; let i = index" 
-            >
-            <div class="divTableCell Seleccionar">
-                <input type="checkbox" id="{{ tender.tender_id }}">
+
+            <div class="divTableBody">
+                <div class="divTableRow"
+                    *ngFor="let tender of favTendersList | paginate: { itemsPerPage: 10, currentPage: page }; let i = index">
+                    <div class="divTableCell Seleccionar">
+                        <input type="checkbox" id="{{ tender.tender_id }}">
+                    </div>
+                    <div class="divTableCell id">{{ tender.id }}</div>
+                    <div class="divTableCell Descripción">{{ tender.description }}</div>
+                    <div class="divTableCell columnField w-15">
+                        <button class="btn" data-bs-toggle="modal" data-bs-target="#showTender"
+                            (click)="selectedItem = tender"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
             </div>
-            <div class="divTableCell id">{{ tender.tender_id }}</div>
-            <div class="divTableCell Nombre">{{ tender.name }}</div>
-            <div class="divTableCell Descripción">{{ tender.description }}</div>
-            </div>
-        </div>
         </div>
         <div class="divTableFoot">
 
             <div class="button-group">
-                <pagination-controls
-                    class="my-pagination"
-                    (pageChange) = "page = $event"
-                    responsive="true"
-                    previousLabel="Anterior"
-                    nextLabel="Siguiente"
-                ></pagination-controls>
-
-                <!-- <button type="button" class="action-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Guardar en favoritos
-                </button> -->
-                <button type="button" class="action-button" (click)="deleteFavTenders()">Eliminar de favoritos</button> 
+                <pagination-controls class="my-pagination" (pageChange)="page = $event" responsive="true"
+                    previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                <button type="button" class="action-button" (click)="deleteFavTenders()">Eliminar de favoritos</button>
             </div>
 
         </div>
-        
+
     </div>
-    
-    
-    
-        
+
     <!-- Modal -->
-    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Agregar institucion favorita</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                    <label class="input-group-text" for="institutionSelect">Instituciones</label>
+    <div class="modal fade" id="showTender" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Informacion de la licitación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="fw-bold col-6">Número de procedimiento</div>
+                        <div class="col-6">{{selectedItem.id}}</div>
                     </div>
-                    <select class="custom-select" id="institutionSelect">
-                        <ng-template ngFor let-institution [ngForOf]="institutionsList" let-i="index" let-f="first">
-                            <option *ngIf="f" selected>{{ institution.name }}</option>
-                            <option *ngIf="!f">{{ institution.name }}</option>
-                        </ng-template>
-                    </select>
+                    <div class="row">
+                        <div class="fw-bold col-6">Descripción</div>
+                        <div class="col-6">{{selectedItem.description}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="fw-bold col-6">Institución</div>
+                        <div class="col-6">{{selectedItem.institution_name}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="fw-bold col-6">Fecha de publicación</div>
+                        <div class="col-6">{{selectedItem.publication_date | date:'dd/MM/yyyy'}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="fw-bold col-6">Fecha de inicio de recepción de ofertas</div>
+                        <div class="col-6">{{selectedItem.opening_date | date:'dd/MM/yyyy'}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="fw-bold col-6">Fecha de cierre de ofertas</div>
+                        <div class="col-6">{{selectedItem.close_date | date:'dd/MM/yyyy'}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="fw-bold col-6">Regiones</div>
+                        <div class="col-6"><span class="bg-success text-dark bg-opacity-25 me-1"
+                                *ngFor="let region of selectedItem.regions"> {{region}} </span></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveInstitution()">Guardar institucion</button>
-            </div>
         </div>
-        </div>
-    </div> -->
+    </div>
+
 </ng-template>

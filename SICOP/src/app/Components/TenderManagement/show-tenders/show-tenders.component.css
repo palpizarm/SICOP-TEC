@@ -1,20 +1,131 @@
-.button-group{
-    margin-top: 20px;
-    position: fixed;
-    bottom: 25%;
-    right: 10%;
-}
 
-.button-group .action-button{
-    background: rgb(24, 41, 201); 
+.applyFilters-button{
+    background: rgb(52, 65, 182); 
     color: white;
     border: 0 none;
     border-radius: 5px;
     cursor: pointer; 
     min-width: 130px;
-    margin: 0 3px;
     padding: 5px 5px;
-    text-transform: uppercase; 
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 35%;
+}
+
+
+.select {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    width: 80%;
+}    .select select {
+        font-family: 'Arial';
+        font-size: small;
+        display: inline-block;
+        width: 100%;
+        cursor: pointer;
+        padding: 8px 16px;
+        outline: 0;
+        border: 1px solid #000000;
+        border-radius: 9px;
+        background: #ffffff;
+        color: #000000;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+        .select select::-ms-expand {
+            display: none;
+        }
+        .select select:hover,
+        .select select:focus {
+            color: #000000;
+            background: #f1f1f1;
+        }
+        .select select:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+.select_arrow {
+    position: absolute;
+    top: 17px;
+    right: 29px;
+    pointer-events: none;
+    border-style: solid;
+    border-width: 8px 5px 0px 5px;
+    border-color: #7b7b7b transparent transparent transparent;
+}
+.select select:hover ~ .select_arrow,
+.select select:focus ~ .select_arrow {
+    border-top-color: #000000;
+}
+.select select:disabled ~ .select_arrow {
+    border-top-color: #cccccc;
+}
+
+
+
+
+.offcanvas {
+    background-color: #EDF1FF;
+}
+
+.accordion--custom .accordion-header input[type=checkbox]{
+    width: 25px;
+    height: 25px;
+   
+}
+
+.accordion--custom .accordion-header input[type=checkbox]:focus{
+    width: 25px;
+    height: 25px;
+   
+}
+
+.accordion--custom .accordion-header {
+    display: flex; /* make flex element */
+    align-items: center; /* aligning child items */
+    column-gap: 1rem; /* adding gap between items in row */
+    padding-left: 1rem;
+    background: #EDF1FF;
+
+}
+
+.accordion--custom .accordion-header{
+
+}
+
+
+  
+/* small udjustments */
+.accordion--custom .accordion-header .accordion-button {
+    padding-left: 0;
+    background: #EDF1FF;
+    text-decoration: none;
+    user-select: none;
+}
+
+.accordion--custom .accordion-button:not(.collapsed) {
+    box-shadow: none;
+}
+
+.button-group{
+    margin-top: 20px;
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+}
+
+.button-group .action-button{
+    background: rgb(52, 65, 182); 
+    color: white;
+    border: 0 none;
+    border-radius: 5px;
+    cursor: pointer; 
+    min-width: 100px;
+    margin: 0 3px;
+    padding: 5px 5px 5px 5px;
     display: inline-block;
 }
 
@@ -44,7 +155,7 @@ div.divTableStyle {
   }
   .divTable.divTableStyle .id {
     border: 1px solid #FFFFFF;
-    width: 10%;
+    width: 20%;
   }
 
   .divTable.divTableStyle .Nombre {

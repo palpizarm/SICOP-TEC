@@ -4,7 +4,7 @@
         <ul class="nav col-auto me-auto mb-2 justify-content-center mb-md-0">
             <li><button class="btn px-2 text-white" [disabled]="!isLogged" (click)="displaySidebar = !displaySidebar"><i
                         class="fas fa-bars"></i></button></li>
-            <li><a [routerLink]="['/']" class="nav-link px-2 text-white"><i class="fas fa-home"></i></a></li>
+            <li><button class="btn px-2 text-white" (click)="redirect()"><i class="fas fa-home"></i></button></li>
         </ul>
 
 
@@ -20,7 +20,7 @@
                 <ul class="dropdown-menu" style="width: 400px;">
                     <li class="text-center my-1 fw-bold">Notificaciones</li>
                     <li *ngIf="notificationsList.length === 0" class="text-wrap text-center" style="font-size: x-small;">No tiene ninguna notificación todavia</li>
-                    <li><a class="dropdown-item move-cursor bg-light"
+                    <li><a class="dropdown-item move-cursor bg-light border-bottom mb-1"
                             *ngFor="let item of notificationsList; let i = index;">
                             <p class="text-wrap">{{item.message}}</p>
                             <p class="text-end">{{item.date_created | date: 'dd/MM/yyyy'}}</p>
