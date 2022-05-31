@@ -32,13 +32,14 @@ export class SidebarOptions {
             case '2': {
                 return [
                     {
-                        name: "Lista de categorias",
-                        route:  '/CategoriesList'
+                        name: "Licitaciones",
+                        route:  "/TenderList"
                     },
                     {
-                        name: "Licitaciones",
-                        route:  "/Tenders"
+                        name: "Lista de categorias",
+                        route:  '/CategoriesList'
                     }
+                   
                 ]
             }
             case '1': {

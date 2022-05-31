@@ -73,6 +73,7 @@ export class ShowTendersComponent implements OnInit {
     save_history(tender:any)
     {
         this.selectedItem = tender;
+        console.log(tender.publication_date);
         this._tenderService.insertHistory(tender.tender_id,this.userID).subscribe(
             (data: any) => {
                 console.log(data);
